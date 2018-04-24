@@ -1,8 +1,8 @@
 const async = require('async')
 const testUtil = require('./util')
 const Trie = require('merkle-patricia-tree/secure')
-const ethUtil = require('ethereumjs-util')
-const BN = ethUtil.BN
+const hucUtil = require('happyucjs-util')
+const BN = hucUtil.BN
 
 function parseTestCases (forkConfig, testData, data, gasLimit, value) {
   let testCases = testData['post'][forkConfig].map(testCase => {

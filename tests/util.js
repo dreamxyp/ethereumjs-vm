@@ -1,10 +1,10 @@
 const async = require('async')
-const utils = require('ethereumjs-util')
+const utils = require('happyucjs-util')
 const BN = utils.BN
 const rlp = utils.rlp
-const Account = require('ethereumjs-account')
-const Transaction = require('ethereumjs-tx')
-const Block = require('ethereumjs-block')
+const Account = require('happyucjs-account')
+const Transaction = require('happyucjs-tx')
+const Block = require('happyucjs-block')
 
 exports.dumpState = function (state, cb) {
   function readAccounts (state) {

@@ -1,13 +1,13 @@
 const Buffer = require('safe-buffer').Buffer // use for Node.js <4.5.0
 const async = require('async')
 const Trie = require('merkle-patricia-tree/secure')
-const Block = require('ethereumjs-block')
-const Blockchain = require('ethereumjs-blockchain')
-const BlockHeader = require('ethereumjs-block/header.js')
+const Block = require('happyucjs-block')
+const Blockchain = require('happyucjs-blockchain')
+const BlockHeader = require('happyucjs-block/header.js')
 const VM = require('../../')
 const Level = require('levelup')
-const Account = require('ethereumjs-account')
-const utils = require('ethereumjs-util')
+const Account = require('happyucjs-account')
+const utils = require('happyucjs-util')
 const BN = utils.BN
 const rlp = utils.rlp
 const testData = require('./test-data')
@@ -17,7 +17,7 @@ var blockchainDB = new Level('', { db: require('memdown') })
 var state = new Trie()
 
 var blockchain = new Blockchain(blockchainDB)
-blockchain.ethash.cacheDB = new Level('./.cachedb')
+blockchain.huchash.cacheDB = new Level('./.cachedb')
 
 var vm = new VM({
   state: state,

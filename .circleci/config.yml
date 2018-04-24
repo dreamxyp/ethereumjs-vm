@@ -28,7 +28,7 @@ jobs:
       - persist_to_workspace:
           root: ~/project
           paths:
-            - ethreumjs-vm/
+            - hucreumjs-vm/
   lint:
     <<: *defaults
     steps:

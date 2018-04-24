@@ -6561,7 +6561,7 @@ function hasOwnProperty(obj, prop) {
 'use strict';
 
 /*
- * Example - Running code on an ethereum-vm
+ * Example - Running code on an happyuc-vm
  *
  *
  * To run this example in the browser, use the pre-bundled
@@ -6600,7 +6600,7 @@ module.exports = require('./lib/index.js');
 
 var Buffer = require('safe-buffer').Buffer;
 var assert = require('assert');
-var utils = require('ethereumjs-util');
+var utils = require('happyucjs-util');
 var byteSize = 256;
 
 /**
@@ -6688,12 +6688,12 @@ Bloom.prototype.or = function (bloom) {
   }
 };
 
-},{"assert":1,"ethereumjs-util":118,"safe-buffer":238}],37:[function(require,module,exports){
+},{"assert":1,"happyucjs-util":118,"safe-buffer":238}],37:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('safe-buffer').Buffer;
 var Tree = require('functional-red-black-tree');
-var Account = require('ethereumjs-account');
+var Account = require('happyucjs-account');
 var async = require('async');
 
 var Cache = module.exports = function (trie) {
@@ -6844,7 +6844,7 @@ Cache.prototype._update = function (key, val, modified, exists) {
   }
 };
 
-},{"async":63,"ethereumjs-account":112,"functional-red-black-tree":120,"safe-buffer":238}],38:[function(require,module,exports){
+},{"async":63,"happyucjs-account":112,"functional-red-black-tree":120,"safe-buffer":238}],38:[function(require,module,exports){
 'use strict';
 
 exports.ERROR = {
@@ -6859,7 +6859,7 @@ exports.ERROR = {
 'use strict';
 
 var Buffer = require('safe-buffer').Buffer;
-var utils = require('ethereumjs-util');
+var utils = require('happyucjs-util');
 
 module.exports = {
   getBlock: function getBlock(n, cb) {
@@ -6875,16 +6875,16 @@ module.exports = {
   }
 };
 
-},{"ethereumjs-util":118,"safe-buffer":238}],40:[function(require,module,exports){
+},{"happyucjs-util":118,"safe-buffer":238}],40:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('safe-buffer').Buffer;
 var util = require('util');
-var ethUtil = require('ethereumjs-util');
+var hucUtil = require('happyucjs-util');
 var StateManager = require('./stateManager.js');
-var Account = require('ethereumjs-account');
+var Account = require('happyucjs-account');
 var AsyncEventEmitter = require('async-eventemitter');
-var BN = ethUtil.BN;
+var BN = hucUtil.BN;
 
 // require the percomiled contracts
 var num01 = require('./precompiled/01-ecrecover.js');
@@ -6895,10 +6895,10 @@ var num04 = require('./precompiled/04-identity.js');
 module.exports = VM;
 
 VM.deps = {
-  ethUtil: ethUtil,
-  Account: require('ethereumjs-account'),
+  hucUtil: hucUtil,
+  Account: require('happyucjs-account'),
   Trie: require('merkle-patricia-tree'),
-  rlp: require('ethereumjs-util').rlp
+  rlp: require('happyucjs-util').rlp
 
   /**
    * @constructor
@@ -6964,10 +6964,10 @@ VM.prototype.populateCache = function (addresses, cb) {
   this.stateManager.warmCache(addresses, cb);
 };
 
-},{"./precompiled/01-ecrecover.js":44,"./precompiled/02-sha256.js":45,"./precompiled/03-ripemd160.js":46,"./precompiled/04-identity.js":47,"./runBlock.js":48,"./runBlockchain.js":49,"./runCall.js":50,"./runCode.js":51,"./runJit.js":52,"./runTx.js":53,"./stateManager.js":54,"async-eventemitter":60,"ethereumjs-account":112,"ethereumjs-util":118,"merkle-patricia-tree":212,"safe-buffer":238,"util":33}],41:[function(require,module,exports){
+},{"./precompiled/01-ecrecover.js":44,"./precompiled/02-sha256.js":45,"./precompiled/03-ripemd160.js":46,"./precompiled/04-identity.js":47,"./runBlock.js":48,"./runBlockchain.js":49,"./runCall.js":50,"./runCode.js":51,"./runJit.js":52,"./runTx.js":53,"./stateManager.js":54,"async-eventemitter":60,"happyucjs-account":112,"happyucjs-util":118,"merkle-patricia-tree":212,"safe-buffer":238,"util":33}],41:[function(require,module,exports){
 'use strict';
 
-var utils = require('ethereumjs-util');
+var utils = require('happyucjs-util');
 var BN = utils.BN;
 var pow32 = new BN('010000000000000000000000000000000000000000000000000000000000000000', 16);
 var pow31 = new BN('0100000000000000000000000000000000000000000000000000000000000000', 16);
@@ -7072,13 +7072,13 @@ module.exports = function (a) {
   }
 };
 
-},{"ethereumjs-util":118}],42:[function(require,module,exports){
+},{"happyucjs-util":118}],42:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('safe-buffer').Buffer;
 var async = require('async');
-var fees = require('ethereum-common');
-var utils = require('ethereumjs-util');
+var fees = require('happyucjs-common');
+var utils = require('happyucjs-util');
 var BN = utils.BN;
 var constants = require('./constants.js');
 var logTable = require('./logTable.js');
@@ -7904,7 +7904,7 @@ function makeCall(runState, callOptions, localOpts, cb) {
   // increment the runState.depth
   callOptions.depth = runState.depth + 1;
 
-  // check if account has enough ether
+  // check if account has enough huc
   // Note: in the case of delegatecall, the value is persisted and doesn't need to be deducted again
   if (runState.depth >= fees.stackLimit.v || callOptions.delegatecall !== true && new BN(runState.contract.balance).cmp(callOptions.value) === -1) {
     runState.stack.push(Buffer.from([0]));
@@ -7962,7 +7962,7 @@ function makeCall(runState, callOptions, localOpts, cb) {
   }
 }
 
-},{"./constants.js":38,"./logTable.js":41,"async":63,"ethereum-common":110,"ethereumjs-util":118,"safe-buffer":238}],43:[function(require,module,exports){
+},{"./constants.js":38,"./logTable.js":41,"async":63,"happyucjs-common":110,"happyucjs-util":118,"safe-buffer":238}],43:[function(require,module,exports){
 'use strict';
 
 var codes = {
@@ -8147,10 +8147,10 @@ module.exports = function (op, full) {
 },{}],44:[function(require,module,exports){
 'use strict';
 
-var utils = require('ethereumjs-util');
+var utils = require('happyucjs-util');
 var BN = utils.BN;
 var error = require('../constants.js').ERROR;
-var fees = require('ethereum-common');
+var fees = require('happyucjs-common');
 
 module.exports = function (opts) {
   var results = {};
@@ -8184,13 +8184,13 @@ module.exports = function (opts) {
   return results;
 };
 
-},{"../constants.js":38,"ethereum-common":110,"ethereumjs-util":118}],45:[function(require,module,exports){
+},{"../constants.js":38,"happyucjs-common":110,"happyucjs-util":118}],45:[function(require,module,exports){
 'use strict';
 
-var utils = require('ethereumjs-util');
+var utils = require('happyucjs-util');
 var BN = utils.BN;
 var error = require('../constants.js').ERROR;
-var fees = require('ethereum-common');
+var fees = require('happyucjs-common');
 
 module.exports = function (opts) {
   var results = {};
@@ -8212,13 +8212,13 @@ module.exports = function (opts) {
   return results;
 };
 
-},{"../constants.js":38,"ethereum-common":110,"ethereumjs-util":118}],46:[function(require,module,exports){
+},{"../constants.js":38,"happyucjs-common":110,"happyucjs-util":118}],46:[function(require,module,exports){
 'use strict';
 
-var utils = require('ethereumjs-util');
+var utils = require('happyucjs-util');
 var BN = utils.BN;
 var error = require('../constants.js').ERROR;
-var fees = require('ethereum-common');
+var fees = require('happyucjs-common');
 
 module.exports = function (opts) {
   var results = {};
@@ -8240,12 +8240,12 @@ module.exports = function (opts) {
   return results;
 };
 
-},{"../constants.js":38,"ethereum-common":110,"ethereumjs-util":118}],47:[function(require,module,exports){
+},{"../constants.js":38,"happyucjs-common":110,"happyucjs-util":118}],47:[function(require,module,exports){
 'use strict';
 
-var utils = require('ethereumjs-util');
+var utils = require('happyucjs-util');
 var BN = utils.BN;
-var fees = require('ethereum-common');
+var fees = require('happyucjs-common');
 var error = require('../constants.js').ERROR;
 
 module.exports = function (opts) {
@@ -8268,17 +8268,17 @@ module.exports = function (opts) {
   return results;
 };
 
-},{"../constants.js":38,"ethereum-common":110,"ethereumjs-util":118}],48:[function(require,module,exports){
+},{"../constants.js":38,"happyucjs-common":110,"happyucjs-util":118}],48:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('safe-buffer').Buffer;
 var async = require('async');
-var ethUtil = require('ethereumjs-util');
+var hucUtil = require('happyucjs-util');
 var Bloom = require('./bloom.js');
-var common = require('ethereum-common');
-var rlp = ethUtil.rlp;
+var common = require('happyucjs-common');
+var rlp = hucUtil.rlp;
 var Trie = require('merkle-patricia-tree');
-var BN = ethUtil.BN;
+var BN = hucUtil.BN;
 
 var minerReward = new BN(common.minerReward.v);
 var niblingReward = new BN(common.niblingReward.v);
@@ -8471,7 +8471,7 @@ module.exports = function (opts, cb) {
   }
 };
 
-},{"./bloom.js":36,"async":63,"ethereum-common":110,"ethereumjs-util":118,"merkle-patricia-tree":212,"safe-buffer":238}],49:[function(require,module,exports){
+},{"./bloom.js":36,"async":63,"happyucjs-common":110,"happyucjs-util":118,"merkle-patricia-tree":212,"safe-buffer":238}],49:[function(require,module,exports){
 'use strict';
 
 var async = require('async');
@@ -8541,9 +8541,9 @@ module.exports = function (blockchain, cb) {
 
 var Buffer = require('safe-buffer').Buffer;
 var async = require('async');
-var ethUtil = require('ethereumjs-util');
-var BN = ethUtil.BN;
-var fees = require('ethereum-common');
+var hucUtil = require('happyucjs-util');
+var BN = hucUtil.BN;
+var fees = require('happyucjs-common');
 var constants = require('./constants.js');
 
 var ERROR = constants.ERROR;
@@ -8604,7 +8604,7 @@ module.exports = function (opts, cb) {
       code = txData;
       txData = undefined;
       var newNonce = new BN(account.nonce).subn(1);
-      createdAddress = toAddress = ethUtil.generateAddress(caller, newNonce.toArray());
+      createdAddress = toAddress = hucUtil.generateAddress(caller, newNonce.toArray());
       stateManager.getAccount(createdAddress, function (err, account) {
         toAccount = account;
         var NONCE_OFFSET = 1;
@@ -8639,7 +8639,7 @@ module.exports = function (opts, cb) {
   function loadCode(cb) {
     addTxValue();
     // loads the contract's code if the account is a contract
-    if (code || !(toAccount.isContract() || ethUtil.isPrecompiled(toAddress))) {
+    if (code || !(toAccount.isContract() || hucUtil.isPrecompiled(toAddress))) {
       cb();
       return;
     }
@@ -8735,12 +8735,12 @@ module.exports = function (opts, cb) {
   }
 };
 
-},{"./constants.js":38,"async":63,"ethereum-common":110,"ethereumjs-util":118,"safe-buffer":238}],51:[function(require,module,exports){
+},{"./constants.js":38,"async":63,"happyucjs-common":110,"happyucjs-util":118,"safe-buffer":238}],51:[function(require,module,exports){
 'use strict';
 
 /*
 
-This is the core of the Ethereum Virtual Machine (EVM or just VM).
+This is the core of the HappyUC Virtual Machine (EVM or just VM).
 
 NOTES:
 
@@ -8753,8 +8753,8 @@ item length then you must use utils.pad(<item>, 32) first.
 */
 var Buffer = require('safe-buffer').Buffer;
 var async = require('async');
-var utils = require('ethereumjs-util');
-var Block = require('ethereumjs-block');
+var utils = require('happyucjs-util');
+var Block = require('happyucjs-block');
 var lookupOpInfo = require('./opcodes.js');
 var opFns = require('./opFns.js');
 var constants = require('./constants.js');
@@ -8998,7 +8998,7 @@ function preprocessValidJumps(runState) {
   }
 }
 
-},{"./constants.js":38,"./opFns.js":42,"./opcodes.js":43,"async":63,"ethereumjs-block":114,"ethereumjs-util":118,"safe-buffer":238,"timers":29}],52:[function(require,module,exports){
+},{"./constants.js":38,"./opFns.js":42,"./opcodes.js":43,"async":63,"happyucjs-block":114,"happyucjs-util":118,"safe-buffer":238,"timers":29}],52:[function(require,module,exports){
 'use strict';
 
 module.exports = function (opts, cb) {
@@ -9024,13 +9024,13 @@ module.exports = function (opts, cb) {
 
 var Buffer = require('safe-buffer').Buffer;
 var async = require('async');
-var utils = require('ethereumjs-util');
+var utils = require('happyucjs-util');
 var BN = utils.BN;
 var Bloom = require('./bloom.js');
-var Block = require('ethereumjs-block');
+var Block = require('happyucjs-block');
 
 /**
- * Process a transaction. Run the vm. Transfers eth. Checks balances.
+ * Process a transaction. Run the vm. Transfers huc. Checks balances.
  * @method processTx
  * @param opts
  * @param opts.tx {Transaction} - a transaction
@@ -9243,17 +9243,17 @@ function txLogsBloom(logs) {
   return bloom;
 }
 
-},{"./bloom.js":36,"async":63,"ethereumjs-block":114,"ethereumjs-util":118,"safe-buffer":238}],54:[function(require,module,exports){
+},{"./bloom.js":36,"async":63,"happyucjs-block":114,"happyucjs-util":118,"safe-buffer":238}],54:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('safe-buffer').Buffer;
 var Trie = require('merkle-patricia-tree/secure.js');
-var common = require('ethereum-common');
+var common = require('happyucjs-common');
 var async = require('async');
-var Account = require('ethereumjs-account');
+var Account = require('happyucjs-account');
 var fakeBlockchain = require('./fakeBlockChain.js');
 var Cache = require('./cache.js');
-var utils = require('ethereumjs-util');
+var utils = require('happyucjs-util');
 var BN = utils.BN;
 var rlp = utils.rlp;
 
@@ -9575,7 +9575,7 @@ proto.accountIsEmpty = function (address, cb) {
   });
 };
 
-},{"./cache.js":37,"./fakeBlockChain.js":39,"async":63,"ethereum-common":110,"ethereumjs-account":112,"ethereumjs-util":118,"merkle-patricia-tree/secure.js":216,"safe-buffer":238}],55:[function(require,module,exports){
+},{"./cache.js":37,"./fakeBlockChain.js":39,"async":63,"happyucjs-common":110,"happyucjs-account":112,"happyucjs-util":118,"merkle-patricia-tree/secure.js":216,"safe-buffer":238}],55:[function(require,module,exports){
 (function (process){
 /* Copyright (c) 2013 Rod Vagg, MIT License */
 
@@ -24365,7 +24365,7 @@ module.exports={
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
   "_shasum": "cac9af8762c85836187003c8dfe193e5e2eae5df",
   "_spec": "elliptic@^6.2.3",
-  "_where": "/Users/julianduque/MEGA/data/Development/ethereum/ethereumjs-vm/node_modules/secp256k1",
+  "_where": "/Users/julianduque/MEGA/data/Development/happyucjs/happyucjs-vm/node_modules/secp256k1",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -34031,7 +34031,7 @@ module.exports={
 
 },{}],112:[function(require,module,exports){
 (function (Buffer){
-const ethUtil = require('ethereumjs-util')
+const hucUtil = require('happyucjs-util')
 const rlp = require('rlp')
 
 var Account = module.exports = function (data) {
@@ -34045,14 +34045,14 @@ var Account = module.exports = function (data) {
   }, {
     name: 'stateRoot',
     length: 32,
-    default: ethUtil.SHA3_RLP
+    default: hucUtil.SHA3_RLP
   }, {
     name: 'codeHash',
     length: 32,
-    default: ethUtil.SHA3_NULL
+    default: hucUtil.SHA3_NULL
   }]
 
-  ethUtil.defineProperties(this, fields, data)
+  hucUtil.defineProperties(this, fields, data)
 }
 
 Account.prototype.serialize = function () {
@@ -34060,7 +34060,7 @@ Account.prototype.serialize = function () {
 }
 
 Account.prototype.isContract = function () {
-  return this.codeHash.toString('hex') !== ethUtil.SHA3_NULL_S
+  return this.codeHash.toString('hex') !== hucUtil.SHA3_NULL_S
 }
 
 Account.prototype.getCode = function (state, cb) {
@@ -34075,9 +34075,9 @@ Account.prototype.getCode = function (state, cb) {
 Account.prototype.setCode = function (trie, code, cb) {
   var self = this
 
-  this.codeHash = ethUtil.sha3(code)
+  this.codeHash = hucUtil.sha3(code)
 
-  if (this.codeHash.toString('hex') === ethUtil.SHA3_NULL_S) {
+  if (this.codeHash.toString('hex') === hucUtil.SHA3_NULL_S) {
     cb(null, new Buffer([]))
     return
   }
@@ -34107,17 +34107,17 @@ Account.prototype.setStorage = function (trie, key, val, cb) {
 Account.prototype.isEmpty = function () {
   return this.balance.toString('hex') === '' &&
   this.nonce.toString('hex') === '' &&
-  this.stateRoot.toString('hex') === ethUtil.SHA3_RLP_S &&
-  this.codeHash.toString('hex') === ethUtil.SHA3_NULL_S
+  this.stateRoot.toString('hex') === hucUtil.SHA3_RLP_S &&
+  this.codeHash.toString('hex') === hucUtil.SHA3_NULL_S
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":4,"ethereumjs-util":118,"rlp":237}],113:[function(require,module,exports){
+},{"buffer":4,"happyucjs-util":118,"rlp":237}],113:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
-var utils = require('ethereumjs-util');
-var params = require('ethereum-common/params.json');
+var utils = require('happyucjs-util');
+var params = require('happyucjs-common/params.json');
 var BN = utils.BN;
 /**
  * An object that repersents the block header
@@ -34368,18 +34368,18 @@ BlockHeader.prototype.isHomesteadReprice = function () {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":4,"ethereum-common/params.json":115,"ethereumjs-util":117}],114:[function(require,module,exports){
+},{"buffer":4,"happyucjs-common/params.json":115,"happyucjs-util":117}],114:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
-var ethUtil = require('ethereumjs-util');
-var Tx = require('ethereumjs-tx');
+var hucUtil = require('happyucjs-util');
+var Tx = require('happyucjs-tx');
 var Trie = require('merkle-patricia-tree');
-var BN = ethUtil.BN;
-var rlp = ethUtil.rlp;
+var BN = hucUtil.BN;
+var rlp = hucUtil.rlp;
 var async = require('async');
 var BlockHeader = require('./header');
-var params = require('ethereum-common/params.json');
+var params = require('happyucjs-common/params.json');
 
 /**
  * Creates a new block object
@@ -34536,7 +34536,7 @@ Block.prototype.validateTransactionsTrie = function () {
   if (this.transactions.length) {
     return txT === this.txTrie.root.toString('hex');
   } else {
-    return txT === ethUtil.SHA3_RLP.toString('hex');
+    return txT === hucUtil.SHA3_RLP.toString('hex');
   }
 };
 
@@ -34613,7 +34613,7 @@ Block.prototype.validateUnclesHash = function () {
   });
 
   raw = rlp.encode(raw);
-  return ethUtil.sha3(raw).toString('hex') === this.header.uncleHash.toString('hex');
+  return hucUtil.sha3(raw).toString('hex') === this.header.uncleHash.toString('hex');
 };
 
 /**
@@ -34681,7 +34681,7 @@ Block.prototype.toJSON = function (labeled) {
     });
     return obj;
   } else {
-    return ethUtil.baToJSON(this.raw);
+    return hucUtil.baToJSON(this.raw);
   }
 };
 
@@ -34699,7 +34699,7 @@ function arrayToString(array) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./header":113,"async":63,"buffer":4,"ethereum-common/params.json":115,"ethereumjs-tx":116,"ethereumjs-util":117,"merkle-patricia-tree":212}],115:[function(require,module,exports){
+},{"./header":113,"async":63,"buffer":4,"happyucjs-common/params.json":115,"happyucjs-tx":116,"happyucjs-util":117,"merkle-patricia-tree":212}],115:[function(require,module,exports){
 module.exports={
   "genesisGasLimit": {
     "v": 5000,
@@ -34944,9 +34944,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ethUtil = require('ethereumjs-util');
-var fees = require('ethereum-common/params.json');
-var BN = ethUtil.BN;
+var hucUtil = require('happyucjs-util');
+var fees = require('happyucjs-common/params.json');
+var BN = hucUtil.BN;
 
 // secp256k1n/2
 var N_DIV_2 = new BN('7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46681b20a0', 16);
@@ -34980,7 +34980,7 @@ var N_DIV_2 = new BN('7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f4668
  * @param {Buffer} data.gasLimit transaction gas limit
  * @param {Buffer} data.gasPrice transaction gas price
  * @param {Buffer} data.to to the to address
- * @param {Buffer} data.value the amount of ether sent
+ * @param {Buffer} data.value the amount of huc sent
  * @param {Buffer} data.data this will contain the data of the message or the init of a contract
  * @param {Buffer} data.v EC signature parameter
  * @param {Buffer} data.r EC signature parameter
@@ -35048,7 +35048,7 @@ var Transaction = function () {
      * @name serialize
      */
     // attached serialize
-    ethUtil.defineProperties(this, fields, data);
+    hucUtil.defineProperties(this, fields, data);
 
     /**
      * @property {Buffer} from (read only) sender address of this transaction, mathematically derived from other parameters.
@@ -35062,7 +35062,7 @@ var Transaction = function () {
     });
 
     // calculate chainId from signature
-    var sigV = ethUtil.bufferToInt(this.v);
+    var sigV = hucUtil.bufferToInt(this.v);
     var chainId = Math.floor((sigV - 35) / 2);
     if (chainId < 0) chainId = 0;
 
@@ -35116,7 +35116,7 @@ var Transaction = function () {
       }
 
       // create hash
-      return ethUtil.rlphash(items);
+      return hucUtil.rlphash(items);
     }
 
     /**
@@ -35142,7 +35142,7 @@ var Transaction = function () {
         return this._from;
       }
       var pubkey = this.getSenderPublicKey();
-      this._from = ethUtil.publicToAddress(pubkey);
+      this._from = hucUtil.publicToAddress(pubkey);
       return this._from;
     }
 
@@ -35175,11 +35175,11 @@ var Transaction = function () {
       }
 
       try {
-        var v = ethUtil.bufferToInt(this.v);
+        var v = hucUtil.bufferToInt(this.v);
         if (this._chainId > 0) {
           v -= this._chainId * 2 + 8;
         }
-        this._senderPubKey = ethUtil.ecrecover(msgHash, v, this.r, this.s);
+        this._senderPubKey = hucUtil.ecrecover(msgHash, v, this.r, this.s);
       } catch (e) {
         return false;
       }
@@ -35196,7 +35196,7 @@ var Transaction = function () {
     key: 'sign',
     value: function sign(privateKey) {
       var msgHash = this.hash(false);
-      var sig = ethUtil.ecsign(msgHash, privateKey);
+      var sig = hucUtil.ecsign(msgHash, privateKey);
       if (this._chainId > 0) {
         sig.v += this._chainId * 2 + 8;
       }
@@ -35277,7 +35277,7 @@ var Transaction = function () {
 module.exports = Transaction;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":4,"ethereum-common/params.json":115,"ethereumjs-util":117}],117:[function(require,module,exports){
+},{"buffer":4,"happyucjs-common/params.json":115,"happyucjs-util":117}],117:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -35346,7 +35346,7 @@ exports.SHA3_RLP = Buffer.from(exports.SHA3_RLP_S, 'hex');
 exports.BN = BN;
 
 /**
- * [`rlp`](https://github.com/ethereumjs/rlp)
+ * [`rlp`](https://github.com/happyucjs/rlp)
  * @var {Function}
  */
 exports.rlp = rlp;
@@ -35544,7 +35544,7 @@ exports.isValidPrivate = function (privateKey) {
 
 /**
  * Checks if the public key satisfies the rules of the curve secp256k1
- * and the requirements of Ethereum.
+ * and the requirements of HappyUC.
  * @param {Buffer} publicKey The two points of an uncompressed key, unless sanitize is enabled
  * @param {Boolean} [sanitize=false] Accept public keys in other formats
  * @return {Boolean}
@@ -35563,8 +35563,8 @@ exports.isValidPublic = function (publicKey, sanitize) {
 };
 
 /**
- * Returns the ethereum address of a given public key.
- * Accepts "Ethereum public keys" and SEC1 encoded keys.
+ * Returns the happyuc address of a given public key.
+ * Accepts "HappyUC public keys" and SEC1 encoded keys.
  * @param {Buffer} pubKey The two points of an uncompressed key, unless sanitize is enabled
  * @param {Boolean} [sanitize=false] Accept public keys in other formats
  * @return {Buffer}
@@ -35580,7 +35580,7 @@ exports.pubToAddress = exports.publicToAddress = function (pubKey, sanitize) {
 };
 
 /**
- * Returns the ethereum public key of a given private key
+ * Returns the happyuc public key of a given private key
  * @param {Buffer} privateKey A private key must be 256 bits wide
  * @return {Buffer}
  */
@@ -35591,7 +35591,7 @@ var privateToPublic = exports.privateToPublic = function (privateKey) {
 };
 
 /**
- * Converts a public key to the Ethereum format.
+ * Converts a public key to the HappyUC format.
  * @param {Buffer} publicKey
  * @return {Buffer}
  */
@@ -35620,15 +35620,15 @@ exports.ecsign = function (msgHash, privateKey) {
 };
 
 /**
- * Returns the keccak-256 hash of `message`, prefixed with the header used by the `eth_sign` RPC call.
- * The output of this function can be fed into `ecsign` to produce the same signature as the `eth_sign`
+ * Returns the keccak-256 hash of `message`, prefixed with the header used by the `huc_sign` RPC call.
+ * The output of this function can be fed into `ecsign` to produce the same signature as the `huc_sign`
  * call for a given `message`, or fed to `ecrecover` along with a signature to recover the public key
  * used to produce the signature.
  * @param message
  * @returns {Buffer} hash
  */
 exports.hashPersonalMessage = function (message) {
-  var prefix = exports.toBuffer('\x19Ethereum Signed Message:\n' + message.length.toString());
+  var prefix = exports.toBuffer('\x19HappyUC Signed Message:\n' + message.length.toString());
   return exports.sha3(Buffer.concat([prefix, message]));
 };
 
@@ -35651,7 +35651,7 @@ exports.ecrecover = function (msgHash, v, r, s) {
 };
 
 /**
- * Convert signature parameters into the format of `eth_sign` RPC method
+ * Convert signature parameters into the format of `huc_sign` RPC method
  * @param {Number} v
  * @param {Buffer} r
  * @param {Buffer} s
@@ -35663,14 +35663,14 @@ exports.toRpcSig = function (v, r, s) {
     throw new Error('Invalid recovery id');
   }
 
-  // geth (and the RPC eth_sign method) uses the 65 byte format used by Bitcoin
-  // FIXME: this might change in the future - https://github.com/ethereum/go-ethereum/issues/2053
+  // ghuc (and the RPC huc_sign method) uses the 65 byte format used by Bitcoin
+  // FIXME: this might change in the future - https://github.com/happyuc-project/happyuc-go/issues/2053
   return exports.bufferToHex(Buffer.concat([exports.setLengthLeft(r, 32), exports.setLengthLeft(s, 32), exports.toBuffer(v - 27)]));
 };
 
 /**
- * Convert signature format of the `eth_sign` RPC method to signature parameters
- * NOTE: all because of a bug in geth: https://github.com/ethereum/go-ethereum/issues/2053
+ * Convert signature format of the `huc_sign` RPC method to signature parameters
+ * NOTE: all because of a bug in ghuc: https://github.com/happyuc-project/happyuc-go/issues/2053
  * @param {String} sig
  * @return {Object}
  */
@@ -35683,7 +35683,7 @@ exports.fromRpcSig = function (sig) {
   }
 
   var v = sig[64];
-  // support both versions of `eth_sign` responses
+  // support both versions of `huc_sign` responses
   if (v < 27) {
     v += 27;
   }
@@ -35696,7 +35696,7 @@ exports.fromRpcSig = function (sig) {
 };
 
 /**
- * Returns the ethereum address of a given private key
+ * Returns the happyuc address of a given private key
  * @param {Buffer} privateKey A private key must be 256 bits wide
  * @return {Buffer}
  */
@@ -36012,7 +36012,7 @@ exports.SHA3_RLP = new Buffer(exports.SHA3_RLP_S, 'hex')
 exports.BN = BN
 
 /**
- * [`rlp`](https://github.com/ethereumjs/rlp)
+ * [`rlp`](https://github.com/happyucjs/rlp)
  * @var {Function}
  */
 exports.rlp = rlp
@@ -36259,7 +36259,7 @@ exports.isValidPrivate = function (privateKey) {
 
 /**
  * Checks if the public key satisfies the rules of the curve secp256k1
- * and the requirements of Ethereum.
+ * and the requirements of HappyUC.
  * @method isValidPublic
  * @param {Buffer} publicKey The two points of an uncompressed key, unless sanitize is enabled
  * @param {Boolean} [sanitize=false] Accept public keys in other formats
@@ -36279,8 +36279,8 @@ exports.isValidPublic = function (publicKey, sanitize) {
 }
 
 /**
- * Returns the ethereum address of a given public key.
- * Accepts "Ethereum public keys" and SEC1 encoded keys.
+ * Returns the happyuc address of a given public key.
+ * Accepts "HappyUC public keys" and SEC1 encoded keys.
  * @method publicToAddress
  * @param {Buffer} pubKey The two points of an uncompressed key, unless sanitize is enabled
  * @param {Boolean} [sanitize=false] Accept public keys in other formats
@@ -36297,7 +36297,7 @@ exports.pubToAddress = exports.publicToAddress = function (pubKey, sanitize) {
 }
 
 /**
- * Returns the ethereum public key of a given private key
+ * Returns the happyuc public key of a given private key
  * @method privateToPublic
  * @param {Buffer} privateKey A private key must be 256 bits wide
  * @return {Buffer}
@@ -36309,7 +36309,7 @@ var privateToPublic = exports.privateToPublic = function (privateKey) {
 }
 
 /**
- * Converts a public key to the Ethereum format.
+ * Converts a public key to the HappyUC format.
  * @method importPublic
  * @param {Buffer} publicKey
  * @return {Buffer}
@@ -36359,7 +36359,7 @@ exports.ecrecover = function (msgHash, v, r, s) {
 }
 
 /**
- * Convert signature parameters into the format of `eth_sign` RPC method
+ * Convert signature parameters into the format of `huc_sign` RPC method
  * @method toRpcSig
  * @param {Number} v
  * @param {Buffer} r
@@ -36367,13 +36367,13 @@ exports.ecrecover = function (msgHash, v, r, s) {
  * @return {String} sig
  */
 exports.toRpcSig = function (v, r, s) {
-  // geth (and the RPC eth_sign method) uses the 65 byte format used by Bitcoin
-  // FIXME: this might change in the future - https://github.com/ethereum/go-ethereum/issues/2053
+  // ghuc (and the RPC huc_sign method) uses the 65 byte format used by Bitcoin
+  // FIXME: this might change in the future - https://github.com/happyuc-project/happyuc-go/issues/2053
   return exports.bufferToHex(Buffer.concat([ r, s, exports.toBuffer(v - 27) ]))
 }
 
 /**
- * Convert signature format of the `eth_sign` RPC method to signature parameters
+ * Convert signature format of the `huc_sign` RPC method to signature parameters
  * @method fromRpcSig
  * @param {String} sig
  * @return {Object}
@@ -36382,7 +36382,7 @@ exports.fromRpcSig = function (sig) {
   sig = exports.toBuffer(sig)
 
   var v = sig[64]
-  // support both versions of `eth_sign` responses
+  // support both versions of `huc_sign` responses
   if (v < 27) {
     v += 27
   }
@@ -36395,7 +36395,7 @@ exports.fromRpcSig = function (sig) {
 }
 
 /**
- * Returns the ethereum address of a given private key
+ * Returns the happyuc address of a given private key
  * @method privateToAddress
  * @param {Buffer} privateKey A private key must be 256 bits wide
  * @return {Buffer}
@@ -46241,19 +46241,19 @@ const levelup = require('levelup')
 const memdown = require('memdown')
 const async = require('async')
 const rlp = require('rlp')
-const ethUtil = require('ethereumjs-util')
+const hucUtil = require('happyucjs-util')
 const semaphore = require('semaphore')
 const TrieNode = require('./trieNode')
 const ReadStream = require('./readStream')
 const matchingNibbleLength = require('./util').matchingNibbleLength
 const doKeysMatch = require('./util').doKeysMatch
-const callTogether = require('./util').callTogether
+const callToghuc = require('./util').callToghuc
 const asyncFirstSeries = require('./util').asyncFirstSeries
 
 module.exports = Trie
 
 /**
- * Use `require('merkel-patricia-tree')` for the base interface. In Ethereum applications stick with the Secure Trie Overlay `require('merkel-patricia-tree/secure')`. The API for the raw and the secure interface are about the same
+ * Use `require('merkel-patricia-tree')` for the base interface. In HappyUC applications stick with the Secure Trie Overlay `require('merkel-patricia-tree/secure')`. The API for the raw and the secure interface are about the same
  * @class Trie
  * @param {Object} [db] An instance of [levelup](https://github.com/rvagg/node-levelup/) or a compatible API. If the db is `null` or left undefined, then the trie will be stored in memory via [memdown](https://github.com/rvagg/memdown)
  * @param {Buffer|String} [root]` A hex `String` or `Buffer` for the root of a previously stored trie
@@ -46263,7 +46263,7 @@ module.exports = Trie
  */
 function Trie (db, root) {
   var self = this
-  this.EMPTY_TRIE_ROOT = ethUtil.SHA3_RLP
+  this.EMPTY_TRIE_ROOT = hucUtil.SHA3_RLP
   this.sem = semaphore(1)
 
   // setup dbs
@@ -46278,7 +46278,7 @@ function Trie (db, root) {
   Object.defineProperty(this, 'root', {
     set: function (value) {
       if (value) {
-        value = ethUtil.toBuffer(value)
+        value = hucUtil.toBuffer(value)
         assert(value.length === 32, 'Invalid root length. Roots are 32 bytes')
       } else {
         value = self.EMPTY_TRIE_ROOT
@@ -46303,7 +46303,7 @@ function Trie (db, root) {
 Trie.prototype.get = function (key, cb) {
   var self = this
 
-  key = ethUtil.toBuffer(key)
+  key = hucUtil.toBuffer(key)
 
   self._findPath(key, function (err, node, remainder, stack) {
     var value = null
@@ -46325,16 +46325,16 @@ Trie.prototype.get = function (key, cb) {
 Trie.prototype.put = function (key, value, cb) {
   var self = this
 
-  key = ethUtil.toBuffer(key)
-  value = ethUtil.toBuffer(value)
+  key = hucUtil.toBuffer(key)
+  value = hucUtil.toBuffer(value)
 
   if (!value || value.toString() === '') {
     self.del(key, cb)
   } else {
-    cb = callTogether(cb, self.sem.leave)
+    cb = callToghuc(cb, self.sem.leave)
 
     self.sem.take(function () {
-      if (self.root.toString('hex') !== ethUtil.SHA3_RLP.toString('hex')) {
+      if (self.root.toString('hex') !== hucUtil.SHA3_RLP.toString('hex')) {
         // first try to find the give key or its nearst node
         self._findPath(key, function (err, foundValue, keyRemainder, stack) {
           if (err) {
@@ -46359,8 +46359,8 @@ Trie.prototype.put = function (key, value, cb) {
 Trie.prototype.del = function (key, cb) {
   var self = this
 
-  key = ethUtil.toBuffer(key)
-  cb = callTogether(cb, self.sem.leave)
+  key = hucUtil.toBuffer(key)
+  cb = callToghuc(cb, self.sem.leave)
 
   self.sem.take(function () {
     self._findPath(key, function (err, foundValue, keyRemainder, stack) {
@@ -46383,7 +46383,7 @@ Trie.prototype.del = function (key, cb) {
  * @param {Function} callback A callback `Function`, which is given the arguments `err` - for errors that may have occured and `value` - the found value in a `Buffer` or if no value was found `null`.
  */
 Trie.prototype.getRaw = function (key, cb) {
-  key = ethUtil.toBuffer(key)
+  key = hucUtil.toBuffer(key)
 
   function dbGet (db, cb2) {
     db.get(key, {
@@ -46668,7 +46668,7 @@ Trie.prototype._walkTrie = function (root, onNode, onDone) {
   var aborted = false
   var returnValues = []
 
-  if (root.toString('hex') === ethUtil.SHA3_RLP.toString('hex')) {
+  if (root.toString('hex') === hucUtil.SHA3_RLP.toString('hex')) {
     return onDone()
   }
 
@@ -46805,7 +46805,7 @@ Trie.prototype._deleteNode = function (key, stack, cb) {
         stack.push(parentNode)
       } else {
         // branch node is an leaf or extention and parent node is an exstention
-        // add two keys together
+        // add two keys toghuc
         // dont push the parent node
         branchNodeKey.unshift(branchKey)
         key = key.concat(branchNodeKey)
@@ -46965,20 +46965,20 @@ Trie.prototype.batch = function (ops, cb) {
  * @param {Function} cb
  */
 Trie.prototype.checkRoot = function (root, cb) {
-  root = ethUtil.toBuffer(root)
+  root = hucUtil.toBuffer(root)
   this._lookupNode(root, function (value) {
     cb(null, !!value)
   })
 }
 
-},{"./readStream":214,"./trieNode":217,"./util":218,"assert":1,"async":213,"ethereumjs-util":118,"levelup":176,"memdown":209,"rlp":237,"semaphore":245}],211:[function(require,module,exports){
+},{"./readStream":214,"./trieNode":217,"./util":218,"assert":1,"async":213,"happyucjs-util":118,"levelup":176,"memdown":209,"rlp":237,"semaphore":245}],211:[function(require,module,exports){
 const levelup = require('levelup')
 const memdown = require('memdown')
 const async = require('async')
 const inherits = require('util').inherits
 const Readable = require('readable-stream').Readable
 const levelws = require('level-ws')
-const callTogether = require('./util').callTogether
+const callToghuc = require('./util').callToghuc
 
 module.exports = checkpointInterface
 
@@ -47024,7 +47024,7 @@ function checkpoint () {
  */
 function commit (cb) {
   var self = this
-  cb = callTogether(cb, self.sem.leave)
+  cb = callToghuc(cb, self.sem.leave)
 
   self.sem.take(function () {
     if (self.isCheckpoint) {
@@ -47047,7 +47047,7 @@ function commit (cb) {
  */
 function revert (cb) {
   var self = this
-  cb = callTogether(cb, self.sem.leave)
+  cb = callToghuc(cb, self.sem.leave)
 
   self.sem.take(function () {
     if (self.isCheckpoint) {
@@ -48476,7 +48476,7 @@ TrieReadStream.prototype._read = function () {
 }
 
 },{"./trieNode":217,"readable-stream":235,"util":33}],215:[function(require,module,exports){
-const ethUtil = require('ethereumjs-util')
+const hucUtil = require('happyucjs-util')
 
 module.exports = secureInterface
 
@@ -48496,7 +48496,7 @@ function copy (_super) {
 }
 
 function get (_super, key, cb) {
-  var hash = ethUtil.sha3(key)
+  var hash = hucUtil.sha3(key)
   _super(hash, cb)
 }
 
@@ -48506,17 +48506,17 @@ function put (_super, key, val, cb) {
   if (!val) {
     this.del(key, cb)
   } else {
-    var hash = ethUtil.sha3(key)
+    var hash = hucUtil.sha3(key)
     _super(hash, val, cb)
   }
 }
 
 function del (_super, key, cb) {
-  var hash = ethUtil.sha3(key)
+  var hash = hucUtil.sha3(key)
   _super(hash, cb)
 }
 
-},{"ethereumjs-util":118}],216:[function(require,module,exports){
+},{"happyucjs-util":118}],216:[function(require,module,exports){
 const CheckpointTrie = require('./index')
 const secureInterface = require('./secure-interface')
 const inherits = require('util').inherits
@@ -48537,7 +48537,7 @@ function SecureTrie () {
 },{"./index":212,"./secure-interface":215,"util":33}],217:[function(require,module,exports){
 (function (Buffer){
 const rlp = require('rlp')
-const ethUtil = require('ethereumjs-util')
+const hucUtil = require('happyucjs-util')
 
 module.exports = TrieNode
 
@@ -48650,7 +48650,7 @@ TrieNode.prototype.serialize = function () {
 }
 
 TrieNode.prototype.hash = function () {
-  return ethUtil.sha3(this.serialize())
+  return hucUtil.sha3(this.serialize())
 }
 
 TrieNode.prototype.toString = function () {
@@ -48793,13 +48793,13 @@ function isRawNode (node) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":4,"ethereumjs-util":118,"rlp":237}],218:[function(require,module,exports){
+},{"buffer":4,"happyucjs-util":118,"rlp":237}],218:[function(require,module,exports){
 (function (process){
 const async = require('async')
 
 module.exports = {
   matchingNibbleLength: matchingNibbleLength,
-  callTogether: callTogether,
+  callToghuc: callToghuc,
   asyncFirstSeries: asyncFirstSeries,
   doKeysMatch: doKeysMatch
 }
@@ -48830,7 +48830,7 @@ function doKeysMatch (keyA, keyB) {
  * Take two or more functions and returns a function  that will execute all of
  * the given functions
  */
-function callTogether () {
+function callToghuc () {
   var funcs = arguments
   var length = funcs.length
   var index = length
@@ -49397,7 +49397,7 @@ module.exports = RIPEMD160
 (function (Buffer){
 const assert = require('assert')
 /**
- * RLP Encoding based on: https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP
+ * RLP Encoding based on: https://github.com/happyuc-project/wiki/wiki/%5BEnglish%5D-RLP
  * This function takes in a data, convert it to buffer if not, and a length for recursion
  *
  * @param {Buffer,String,Integer,Array} data - will be converted to buffer
@@ -49441,7 +49441,7 @@ function encodeLength (len, offset) {
 }
 
 /**
- * RLP Decoding based on: {@link https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP|RLP}
+ * RLP Decoding based on: {@link https://github.com/happyuc-project/wiki/wiki/%5BEnglish%5D-RLP|RLP}
  * @param {Buffer,String,Integer,Array} data - will be converted to buffer
  * @returns {Array} - returns decode Array of Buffers containg the original message
  **/

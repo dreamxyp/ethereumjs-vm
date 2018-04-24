@@ -1,16 +1,16 @@
 const tape = require('tape')
 const VM = require('../')
 var async = require('async')
-var Account = require('ethereumjs-account')
-var Transaction = require('ethereumjs-tx')
+var Account = require('happyucjs-account')
+var Transaction = require('happyucjs-tx')
 var Trie = require('merkle-patricia-tree')
-var ethUtil = require('ethereumjs-util')
+var hucUtil = require('happyucjs-util')
 
 tape('test the cache api', function (t) {
   t.test('should have the correct value in the cache ', function (st) {
     var account1 = {
       address: Buffer.from('cd2a3d9f938e13cd947ec05abc7fe734df8dd826', 'hex'),
-      key: ethUtil.sha3('cow')
+      key: hucUtil.sha3('cow')
     }
 
     /*
