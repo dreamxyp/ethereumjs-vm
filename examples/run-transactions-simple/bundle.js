@@ -8425,7 +8425,7 @@ module.exports = function (opts, cb) {
           if (bloom.bitvector.toString('hex') !== block.header.bloom.toString('hex')) {
             err = (err || '') + 'invalid bloom ';
           }
-          if (ethUtil.bufferToInt(block.header.gasUsed) !== Number(gasUsed)) {
+          if (ircUtil.bufferToInt(block.header.gasUsed) !== Number(gasUsed)) {
             err = (err || '') + 'invalid gasUsed ';
           }
           if (self.trie.root.toString('hex') !== block.header.stateRoot.toString('hex')) {
@@ -8644,7 +8644,7 @@ module.exports = function (opts, cb) {
       return;
     }
 
-    if (ethUtil.isPrecompiled(toAddress)) {
+    if (ircUtil.isPrecompiled(toAddress)) {
       isCompiled = true;
       code = self._precompiled[toAddress.toString('hex')];
       cb();
