@@ -33,13 +33,10 @@
   "dependencies": {
     "async": "^2.1.2",
     "async-eventemitter": "^0.2.2",
-    "icjs-testing": "^0.0.1",
     "icjs-common": "^0.0.1",
-    "icjs-util": "^0.0.1",
-    "icjs-blockchain": "git+https://github.com/icjs/icjs-blockchain.git",
     "icjs-account": "git+https://github.com/icjs/icjs-accounts.git",
     "icjs-block": "git+https://github.com/icjs/icjs-block.git",
-    "icjs-tx": "git+https://github.com/icjs/icjs-tx.git",
+    "icjs-util": "^0.0.1",
     "fake-merkle-patricia-tree": "^1.0.1",
     "functional-red-black-tree": "^1.0.1",
     "merkle-patricia-tree": "^2.1.2",
@@ -47,6 +44,9 @@
     "safe-buffer": "^5.1.1"
   },
   "devDependencies": {
+    "icjs-testing": "^0.0.1",
+    "icjs-blockchain": "git+https://github.com/icjs/icjs-blockchain.git",
+    "icjs-tx": "git+https://github.com/icjs/icjs-tx.git",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
