@@ -37,9 +37,9 @@
     "icjs-account": "git+https://github.com/icjs/icjs-accounts.git",
     "icjs-block": "git+https://github.com/icjs/icjs-block.git",
     "icjs-util": "^0.0.1",
+    "icjs-mpt": "^0.0.1",
     "fake-merkle-patricia-tree": "^1.0.1",
     "functional-red-black-tree": "^1.0.1",
-    "merkle-patricia-tree": "^2.1.2",
     "rustbn.js": "~0.1.1",
     "safe-buffer": "^5.1.1"
   },
