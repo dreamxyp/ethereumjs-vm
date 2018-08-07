@@ -1,5 +1,5 @@
 /*
- * Example - Running code on an happyuc-vm
+ * Example - Running code on an irchain-vm
  *
  *
  * To run this example in the browser, use the pre-bundled

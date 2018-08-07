@@ -1,7 +1,7 @@
 {
-  "name": "happyucjs-vm",
-  "version": "2.3.4",
-  "description": "An HappyUC VM implementation",
+  "name": "icjs-vm",
+  "version": "0.0.1",
+  "description": "An IrChain VM implementation",
   "main": "dist/index.js",
   "files": [
     "dist"
@@ -24,19 +24,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/happyucjs/happyucjs-vm.git"
+    "url": "git+https://github.com/icjs/icjs-vm.git"
   },
   "keywords": [
-    "happyuc",
+    "irchain",
     "VM"
   ],
   "dependencies": {
     "async": "^2.1.2",
     "async-eventemitter": "^0.2.2",
-    "happyucjs-common": "/Users/dreamxyp/Transcend/happyuc-js/common/",
-    "happyucjs-account": "/Users/dreamxyp/Transcend/happyuc-js/accounts/",
-    "happyucjs-block": "/Users/dreamxyp/Transcend/happyuc-js/block/",
-    "happyucjs-util": "/Users/dreamxyp/Transcend/happyuc-js/util/",
+    "icjs-testing": "^0.0.1",
+    "icjs-common": "^0.0.1",
+    "icjs-util": "^0.0.1",
+    "icjs-blockchain": "git+https://github.com/icjs/icjs-blockchain.git",
+    "icjs-account": "git+https://github.com/icjs/icjs-accounts.git",
+    "icjs-block": "git+https://github.com/icjs/icjs-block.git",
+    "icjs-tx": "git+https://github.com/icjs/icjs-tx.git",
     "fake-merkle-patricia-tree": "^1.0.1",
     "functional-red-black-tree": "^1.0.1",
     "merkle-patricia-tree": "^2.1.2",
@@ -47,31 +50,33 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
-    "happyucjs-blockchain": "/Users/dreamxyp/Transcend/happyuc-js/blockchain/",
-    "happyucjs-testing": "/Users/dreamxyp/Transcend/happyuc-js/testing/",
-    "happyucjs-tx": "/Users/dreamxyp/Transcend/happyuc-js/tx/",
     "istanbul": "^0.4.5",
     "level": "^1.4.0",
     "leveldown": "^1.4.6",
     "levelup": "^1.3.2",
     "memdown": "^1.1.0",
     "minimist": "^1.1.1",
-    "standard": "^10.0.0",
+    "standard": "^11.0.1",
     "tape": "4.6.3"
   },
-  "author": "mjbecze <mjbecze@gmail.com>",
+  "author": "IrChain Team <contact@irchain.io>",
   "contributors": [
     "Alex Beregszaszi <alex@rtfs.hu>"
   ],
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/happyucjs/happyucjs-vm/issues"
+    "url": "https://github.com/icjs/icjs-vm/issues"
   },
-  "homepage": "https://github.com/happyucjs/happyucjs-vm",
+  "homepage": "https://github.com/icjs/icjs-vm",
   "standard": {
     "ignore": [
       "dist/**",
       "examples/runcode-browserify.js"
     ]
+  },
+  "directories": {
+    "example": "examples",
+    "lib": "lib",
+    "test": "tests"
   }
 }

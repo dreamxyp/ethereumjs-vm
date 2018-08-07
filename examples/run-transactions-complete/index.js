@@ -8,11 +8,11 @@
 var Buffer = require('safe-buffer').Buffer // use for Node.js <4.5.0
 var async = require('async')
 var VM = require('./../../index.js')
-var Account = require('happyucjs-account')
-var Transaction = require('happyucjs-tx')
+var Account = require('icjs-account')
+var Transaction = require('icjs-tx')
 var Trie = require('merkle-patricia-tree')
 var rlp = require('rlp')
-var utils = require('happyucjs-util')
+var utils = require('icjs-util')
 
 // creating a trie that just resides in memory
 var stateTrie = new Trie()

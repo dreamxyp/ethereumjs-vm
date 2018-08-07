@@ -1,10 +1,10 @@
 const async = require('async')
 const VM = require('../')
-const Account = require('happyucjs-account')
+const Account = require('icjs-account')
 const testUtil = require('./util')
 const Trie = require('merkle-patricia-tree/secure')
-const hucUtil = require('happyucjs-util')
-const BN = hucUtil.BN
+const ircUtil = require('icjs-util')
+const BN = ircUtil.BN
 
 module.exports = function runVMTest (options, testData, t, cb) {
   let state = new Trie()

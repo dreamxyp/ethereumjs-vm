@@ -1,10 +1,10 @@
 const async = require('async')
 const testUtil = require('./util.js')
-const hucUtil = require('happyucjs-util')
+const ircUtil = require('icjs-util')
 const Trie = require('merkle-patricia-tree/secure')
-const Block = require('happyucjs-block')
-const Blockchain = require('happyucjs-blockchain')
-const BlockHeader = require('happyucjs-block/header.js')
+const Block = require('icjs-block')
+const Blockchain = require('icjs-blockchain')
+const BlockHeader = require('icjs-block/header.js')
 const Level = require('levelup')
 
 var cacheDB = new Level('./.cachedb')
@@ -14,7 +14,7 @@ module.exports = function runBlockchainTest (options, testData, t, cb) {
   })
   var state = new Trie()
   var blockchain = new Blockchain(blockchainDB)
-  blockchain.huchash.cacheDB = cacheDB
+  blockchain.irchash.cacheDB = cacheDB
   var VM
   if (options.dist) {
     VM = require('../dist/index.js')
@@ -122,7 +122,7 @@ function formatBlockHeader (data) {
   var r = {}
   var keys = Object.keys(data)
   keys.forEach(function (key) {
-    r[key] = hucUtil.addHexPrefix(data[key])
+    r[key] = ircUtil.addHexPrefix(data[key])
   })
   return r
 }

@@ -1,4 +1,4 @@
-const genesisData = require('happyucjs-testing').getSingleFile('BasicTests/genesishashestest.json')
+const genesisData = require('icjs-testing').getSingleFile('BasicTests/genesishashestest.json')
 const tape = require('tape')
 const VM = require('../')
 

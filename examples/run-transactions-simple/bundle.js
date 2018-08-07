@@ -6561,7 +6561,7 @@ function hasOwnProperty(obj, prop) {
 'use strict';
 
 /*
- * Example - Running code on an happyuc-vm
+ * Example - Running code on an irchain-vm
  *
  *
  * To run this example in the browser, use the pre-bundled
@@ -6600,7 +6600,7 @@ module.exports = require('./lib/index.js');
 
 var Buffer = require('safe-buffer').Buffer;
 var assert = require('assert');
-var utils = require('happyucjs-util');
+var utils = require('icjs-util');
 var byteSize = 256;
 
 /**
@@ -6688,12 +6688,12 @@ Bloom.prototype.or = function (bloom) {
   }
 };
 
-},{"assert":1,"happyucjs-util":118,"safe-buffer":238}],37:[function(require,module,exports){
+},{"assert":1,"icjs-util":118,"safe-buffer":238}],37:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('safe-buffer').Buffer;
 var Tree = require('functional-red-black-tree');
-var Account = require('happyucjs-account');
+var Account = require('icjs-account');
 var async = require('async');
 
 var Cache = module.exports = function (trie) {
@@ -6844,7 +6844,7 @@ Cache.prototype._update = function (key, val, modified, exists) {
   }
 };
 
-},{"async":63,"happyucjs-account":112,"functional-red-black-tree":120,"safe-buffer":238}],38:[function(require,module,exports){
+},{"async":63,"icjs-account":112,"functional-red-black-tree":120,"safe-buffer":238}],38:[function(require,module,exports){
 'use strict';
 
 exports.ERROR = {
@@ -6859,7 +6859,7 @@ exports.ERROR = {
 'use strict';
 
 var Buffer = require('safe-buffer').Buffer;
-var utils = require('happyucjs-util');
+var utils = require('icjs-util');
 
 module.exports = {
   getBlock: function getBlock(n, cb) {
@@ -6875,14 +6875,14 @@ module.exports = {
   }
 };
 
-},{"happyucjs-util":118,"safe-buffer":238}],40:[function(require,module,exports){
+},{"icjs-util":118,"safe-buffer":238}],40:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('safe-buffer').Buffer;
 var util = require('util');
-var hucUtil = require('happyucjs-util');
+var hucUtil = require('icjs-util');
 var StateManager = require('./stateManager.js');
-var Account = require('happyucjs-account');
+var Account = require('icjs-account');
 var AsyncEventEmitter = require('async-eventemitter');
 var BN = hucUtil.BN;
 
@@ -6895,10 +6895,10 @@ var num04 = require('./precompiled/04-identity.js');
 module.exports = VM;
 
 VM.deps = {
-  hucUtil: hucUtil,
-  Account: require('happyucjs-account'),
-  Trie: require('merkle-patricia-tree'),
-  rlp: require('happyucjs-util').rlp
+  ircUtil: hucUtil,
+  Account: require('icjs-account'),
+  Trie   : require('merkle-patricia-tree'),
+  rlp    : require('icjs-util').rlp
 
   /**
    * @constructor
@@ -6964,10 +6964,10 @@ VM.prototype.populateCache = function (addresses, cb) {
   this.stateManager.warmCache(addresses, cb);
 };
 
-},{"./precompiled/01-ecrecover.js":44,"./precompiled/02-sha256.js":45,"./precompiled/03-ripemd160.js":46,"./precompiled/04-identity.js":47,"./runBlock.js":48,"./runBlockchain.js":49,"./runCall.js":50,"./runCode.js":51,"./runJit.js":52,"./runTx.js":53,"./stateManager.js":54,"async-eventemitter":60,"happyucjs-account":112,"happyucjs-util":118,"merkle-patricia-tree":212,"safe-buffer":238,"util":33}],41:[function(require,module,exports){
+},{"./precompiled/01-ecrecover.js":44,"./precompiled/02-sha256.js":45,"./precompiled/03-ripemd160.js":46,"./precompiled/04-identity.js":47,"./runBlock.js":48,"./runBlockchain.js":49,"./runCall.js":50,"./runCode.js":51,"./runJit.js":52,"./runTx.js":53,"./stateManager.js":54,"async-eventemitter":60,"icjs-account":112,"icjs-util":118,"merkle-patricia-tree":212,"safe-buffer":238,"util":33}],41:[function(require,module,exports){
 'use strict';
 
-var utils = require('happyucjs-util');
+var utils = require('icjs-util');
 var BN = utils.BN;
 var pow32 = new BN('010000000000000000000000000000000000000000000000000000000000000000', 16);
 var pow31 = new BN('0100000000000000000000000000000000000000000000000000000000000000', 16);
@@ -7072,13 +7072,13 @@ module.exports = function (a) {
   }
 };
 
-},{"happyucjs-util":118}],42:[function(require,module,exports){
+},{"icjs-util":118}],42:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('safe-buffer').Buffer;
 var async = require('async');
-var fees = require('happyucjs-common');
-var utils = require('happyucjs-util');
+var fees = require('icjs-common');
+var utils = require('icjs-util');
 var BN = utils.BN;
 var constants = require('./constants.js');
 var logTable = require('./logTable.js');
@@ -7962,7 +7962,7 @@ function makeCall(runState, callOptions, localOpts, cb) {
   }
 }
 
-},{"./constants.js":38,"./logTable.js":41,"async":63,"happyucjs-common":110,"happyucjs-util":118,"safe-buffer":238}],43:[function(require,module,exports){
+},{"./constants.js":38,"./logTable.js":41,"async":63,"icjs-common":110,"icjs-util":118,"safe-buffer":238}],43:[function(require,module,exports){
 'use strict';
 
 var codes = {
@@ -8147,10 +8147,10 @@ module.exports = function (op, full) {
 },{}],44:[function(require,module,exports){
 'use strict';
 
-var utils = require('happyucjs-util');
+var utils = require('icjs-util');
 var BN = utils.BN;
 var error = require('../constants.js').ERROR;
-var fees = require('happyucjs-common');
+var fees = require('icjs-common');
 
 module.exports = function (opts) {
   var results = {};
@@ -8184,13 +8184,13 @@ module.exports = function (opts) {
   return results;
 };
 
-},{"../constants.js":38,"happyucjs-common":110,"happyucjs-util":118}],45:[function(require,module,exports){
+},{"../constants.js":38,"icjs-common":110,"icjs-util":118}],45:[function(require,module,exports){
 'use strict';
 
-var utils = require('happyucjs-util');
+var utils = require('icjs-util');
 var BN = utils.BN;
 var error = require('../constants.js').ERROR;
-var fees = require('happyucjs-common');
+var fees = require('icjs-common');
 
 module.exports = function (opts) {
   var results = {};
@@ -8212,13 +8212,13 @@ module.exports = function (opts) {
   return results;
 };
 
-},{"../constants.js":38,"happyucjs-common":110,"happyucjs-util":118}],46:[function(require,module,exports){
+},{"../constants.js":38,"icjs-common":110,"icjs-util":118}],46:[function(require,module,exports){
 'use strict';
 
-var utils = require('happyucjs-util');
+var utils = require('icjs-util');
 var BN = utils.BN;
 var error = require('../constants.js').ERROR;
-var fees = require('happyucjs-common');
+var fees = require('icjs-common');
 
 module.exports = function (opts) {
   var results = {};
@@ -8240,12 +8240,12 @@ module.exports = function (opts) {
   return results;
 };
 
-},{"../constants.js":38,"happyucjs-common":110,"happyucjs-util":118}],47:[function(require,module,exports){
+},{"../constants.js":38,"icjs-common":110,"icjs-util":118}],47:[function(require,module,exports){
 'use strict';
 
-var utils = require('happyucjs-util');
+var utils = require('icjs-util');
 var BN = utils.BN;
-var fees = require('happyucjs-common');
+var fees = require('icjs-common');
 var error = require('../constants.js').ERROR;
 
 module.exports = function (opts) {
@@ -8268,14 +8268,14 @@ module.exports = function (opts) {
   return results;
 };
 
-},{"../constants.js":38,"happyucjs-common":110,"happyucjs-util":118}],48:[function(require,module,exports){
+},{"../constants.js":38,"icjs-common":110,"icjs-util":118}],48:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('safe-buffer').Buffer;
 var async = require('async');
-var hucUtil = require('happyucjs-util');
+var hucUtil = require('icjs-util');
 var Bloom = require('./bloom.js');
-var common = require('happyucjs-common');
+var common = require('icjs-common');
 var rlp = hucUtil.rlp;
 var Trie = require('merkle-patricia-tree');
 var BN = hucUtil.BN;
@@ -8471,7 +8471,7 @@ module.exports = function (opts, cb) {
   }
 };
 
-},{"./bloom.js":36,"async":63,"happyucjs-common":110,"happyucjs-util":118,"merkle-patricia-tree":212,"safe-buffer":238}],49:[function(require,module,exports){
+},{"./bloom.js":36,"async":63,"icjs-common":110,"icjs-util":118,"merkle-patricia-tree":212,"safe-buffer":238}],49:[function(require,module,exports){
 'use strict';
 
 var async = require('async');
@@ -8541,9 +8541,9 @@ module.exports = function (blockchain, cb) {
 
 var Buffer = require('safe-buffer').Buffer;
 var async = require('async');
-var hucUtil = require('happyucjs-util');
+var hucUtil = require('icjs-util');
 var BN = hucUtil.BN;
-var fees = require('happyucjs-common');
+var fees = require('icjs-common');
 var constants = require('./constants.js');
 
 var ERROR = constants.ERROR;
@@ -8735,12 +8735,12 @@ module.exports = function (opts, cb) {
   }
 };
 
-},{"./constants.js":38,"async":63,"happyucjs-common":110,"happyucjs-util":118,"safe-buffer":238}],51:[function(require,module,exports){
+},{"./constants.js":38,"async":63,"icjs-common":110,"icjs-util":118,"safe-buffer":238}],51:[function(require,module,exports){
 'use strict';
 
 /*
 
-This is the core of the HappyUC Virtual Machine (EVM or just VM).
+This is the core of the IrChain Virtual Machine (EVM or just VM).
 
 NOTES:
 
@@ -8753,8 +8753,8 @@ item length then you must use utils.pad(<item>, 32) first.
 */
 var Buffer = require('safe-buffer').Buffer;
 var async = require('async');
-var utils = require('happyucjs-util');
-var Block = require('happyucjs-block');
+var utils = require('icjs-util');
+var Block = require('icjs-block');
 var lookupOpInfo = require('./opcodes.js');
 var opFns = require('./opFns.js');
 var constants = require('./constants.js');
@@ -8998,7 +8998,7 @@ function preprocessValidJumps(runState) {
   }
 }
 
-},{"./constants.js":38,"./opFns.js":42,"./opcodes.js":43,"async":63,"happyucjs-block":114,"happyucjs-util":118,"safe-buffer":238,"timers":29}],52:[function(require,module,exports){
+},{"./constants.js":38,"./opFns.js":42,"./opcodes.js":43,"async":63,"icjs-block":114,"icjs-util":118,"safe-buffer":238,"timers":29}],52:[function(require,module,exports){
 'use strict';
 
 module.exports = function (opts, cb) {
@@ -9024,10 +9024,10 @@ module.exports = function (opts, cb) {
 
 var Buffer = require('safe-buffer').Buffer;
 var async = require('async');
-var utils = require('happyucjs-util');
+var utils = require('icjs-util');
 var BN = utils.BN;
 var Bloom = require('./bloom.js');
-var Block = require('happyucjs-block');
+var Block = require('icjs-block');
 
 /**
  * Process a transaction. Run the vm. Transfers huc. Checks balances.
@@ -9243,17 +9243,17 @@ function txLogsBloom(logs) {
   return bloom;
 }
 
-},{"./bloom.js":36,"async":63,"happyucjs-block":114,"happyucjs-util":118,"safe-buffer":238}],54:[function(require,module,exports){
+},{"./bloom.js":36,"async":63,"icjs-block":114,"icjs-util":118,"safe-buffer":238}],54:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('safe-buffer').Buffer;
 var Trie = require('merkle-patricia-tree/secure.js');
-var common = require('happyucjs-common');
+var common = require('icjs-common');
 var async = require('async');
-var Account = require('happyucjs-account');
+var Account = require('icjs-account');
 var fakeBlockchain = require('./fakeBlockChain.js');
 var Cache = require('./cache.js');
-var utils = require('happyucjs-util');
+var utils = require('icjs-util');
 var BN = utils.BN;
 var rlp = utils.rlp;
 
@@ -9575,7 +9575,7 @@ proto.accountIsEmpty = function (address, cb) {
   });
 };
 
-},{"./cache.js":37,"./fakeBlockChain.js":39,"async":63,"happyucjs-common":110,"happyucjs-account":112,"happyucjs-util":118,"merkle-patricia-tree/secure.js":216,"safe-buffer":238}],55:[function(require,module,exports){
+},{"./cache.js":37,"./fakeBlockChain.js":39,"async":63,"icjs-common":110,"icjs-account":112,"icjs-util":118,"merkle-patricia-tree/secure.js":216,"safe-buffer":238}],55:[function(require,module,exports){
 (function (process){
 /* Copyright (c) 2013 Rod Vagg, MIT License */
 
@@ -24365,7 +24365,7 @@ module.exports={
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
   "_shasum": "cac9af8762c85836187003c8dfe193e5e2eae5df",
   "_spec": "elliptic@^6.2.3",
-  "_where": "/Users/julianduque/MEGA/data/Development/happyucjs/happyucjs-vm/node_modules/secp256k1",
+  "_where": "/Users/julianduque/MEGA/data/Development/icjs/icjs-vm/node_modules/secp256k1",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -34031,7 +34031,7 @@ module.exports={
 
 },{}],112:[function(require,module,exports){
 (function (Buffer){
-const hucUtil = require('happyucjs-util')
+const hucUtil = require('icjs-util')
 const rlp = require('rlp')
 
 var Account = module.exports = function (data) {
@@ -34112,12 +34112,12 @@ Account.prototype.isEmpty = function () {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":4,"happyucjs-util":118,"rlp":237}],113:[function(require,module,exports){
+},{"buffer":4,"icjs-util":118,"rlp":237}],113:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
-var utils = require('happyucjs-util');
-var params = require('happyucjs-common/params.json');
+var utils = require('icjs-util');
+var params = require('icjs-common/params.json');
 var BN = utils.BN;
 /**
  * An object that repersents the block header
@@ -34368,18 +34368,18 @@ BlockHeader.prototype.isHomesteadReprice = function () {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":4,"happyucjs-common/params.json":115,"happyucjs-util":117}],114:[function(require,module,exports){
+},{"buffer":4,"icjs-common/params.json":115,"icjs-util":117}],114:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
-var hucUtil = require('happyucjs-util');
-var Tx = require('happyucjs-tx');
+var hucUtil = require('icjs-util');
+var Tx = require('icjs-tx');
 var Trie = require('merkle-patricia-tree');
 var BN = hucUtil.BN;
 var rlp = hucUtil.rlp;
 var async = require('async');
 var BlockHeader = require('./header');
-var params = require('happyucjs-common/params.json');
+var params = require('icjs-common/params.json');
 
 /**
  * Creates a new block object
@@ -34699,7 +34699,7 @@ function arrayToString(array) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./header":113,"async":63,"buffer":4,"happyucjs-common/params.json":115,"happyucjs-tx":116,"happyucjs-util":117,"merkle-patricia-tree":212}],115:[function(require,module,exports){
+},{"./header":113,"async":63,"buffer":4,"icjs-common/params.json":115,"icjs-tx":116,"icjs-util":117,"merkle-patricia-tree":212}],115:[function(require,module,exports){
 module.exports={
   "genesisGasLimit": {
     "v": 5000,
@@ -34944,8 +34944,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var hucUtil = require('happyucjs-util');
-var fees = require('happyucjs-common/params.json');
+var hucUtil = require('icjs-util');
+var fees = require('icjs-common/params.json');
 var BN = hucUtil.BN;
 
 // secp256k1n/2
@@ -35277,7 +35277,7 @@ var Transaction = function () {
 module.exports = Transaction;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":4,"happyucjs-common/params.json":115,"happyucjs-util":117}],117:[function(require,module,exports){
+},{"buffer":4,"icjs-common/params.json":115,"icjs-util":117}],117:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -35346,7 +35346,7 @@ exports.SHA3_RLP = Buffer.from(exports.SHA3_RLP_S, 'hex');
 exports.BN = BN;
 
 /**
- * [`rlp`](https://github.com/happyucjs/rlp)
+ * [`rlp`](https://github.com/icjs/rlp)
  * @var {Function}
  */
 exports.rlp = rlp;
@@ -35544,7 +35544,7 @@ exports.isValidPrivate = function (privateKey) {
 
 /**
  * Checks if the public key satisfies the rules of the curve secp256k1
- * and the requirements of HappyUC.
+ * and the requirements of IrChain.
  * @param {Buffer} publicKey The two points of an uncompressed key, unless sanitize is enabled
  * @param {Boolean} [sanitize=false] Accept public keys in other formats
  * @return {Boolean}
@@ -35563,8 +35563,8 @@ exports.isValidPublic = function (publicKey, sanitize) {
 };
 
 /**
- * Returns the happyuc address of a given public key.
- * Accepts "HappyUC public keys" and SEC1 encoded keys.
+ * Returns the irchain address of a given public key.
+ * Accepts "IrChain public keys" and SEC1 encoded keys.
  * @param {Buffer} pubKey The two points of an uncompressed key, unless sanitize is enabled
  * @param {Boolean} [sanitize=false] Accept public keys in other formats
  * @return {Buffer}
@@ -35580,7 +35580,7 @@ exports.pubToAddress = exports.publicToAddress = function (pubKey, sanitize) {
 };
 
 /**
- * Returns the happyuc public key of a given private key
+ * Returns the irchain public key of a given private key
  * @param {Buffer} privateKey A private key must be 256 bits wide
  * @return {Buffer}
  */
@@ -35591,7 +35591,7 @@ var privateToPublic = exports.privateToPublic = function (privateKey) {
 };
 
 /**
- * Converts a public key to the HappyUC format.
+ * Converts a public key to the IrChain format.
  * @param {Buffer} publicKey
  * @return {Buffer}
  */
@@ -35628,7 +35628,7 @@ exports.ecsign = function (msgHash, privateKey) {
  * @returns {Buffer} hash
  */
 exports.hashPersonalMessage = function (message) {
-  var prefix = exports.toBuffer('\x19HappyUC Signed Message:\n' + message.length.toString());
+  var prefix = exports.toBuffer('\x19IrChain Signed Message:\n' + message.length.toString());
   return exports.sha3(Buffer.concat([prefix, message]));
 };
 
@@ -35664,13 +35664,13 @@ exports.toRpcSig = function (v, r, s) {
   }
 
   // ghuc (and the RPC huc_sign method) uses the 65 byte format used by Bitcoin
-  // FIXME: this might change in the future - https://github.com/happyuc-project/happyuc-go/issues/2053
+  // FIXME: this might change in the future - https://github.com/irchain/go-irchain/issues/2053
   return exports.bufferToHex(Buffer.concat([exports.setLengthLeft(r, 32), exports.setLengthLeft(s, 32), exports.toBuffer(v - 27)]));
 };
 
 /**
  * Convert signature format of the `huc_sign` RPC method to signature parameters
- * NOTE: all because of a bug in ghuc: https://github.com/happyuc-project/happyuc-go/issues/2053
+ * NOTE: all because of a bug in ghuc: https://github.com/irchain/go-irchain/issues/2053
  * @param {String} sig
  * @return {Object}
  */
@@ -35696,7 +35696,7 @@ exports.fromRpcSig = function (sig) {
 };
 
 /**
- * Returns the happyuc address of a given private key
+ * Returns the irchain address of a given private key
  * @param {Buffer} privateKey A private key must be 256 bits wide
  * @return {Buffer}
  */
@@ -36012,7 +36012,7 @@ exports.SHA3_RLP = new Buffer(exports.SHA3_RLP_S, 'hex')
 exports.BN = BN
 
 /**
- * [`rlp`](https://github.com/happyucjs/rlp)
+ * [`rlp`](https://github.com/icjs/rlp)
  * @var {Function}
  */
 exports.rlp = rlp
@@ -36259,7 +36259,7 @@ exports.isValidPrivate = function (privateKey) {
 
 /**
  * Checks if the public key satisfies the rules of the curve secp256k1
- * and the requirements of HappyUC.
+ * and the requirements of IrChain.
  * @method isValidPublic
  * @param {Buffer} publicKey The two points of an uncompressed key, unless sanitize is enabled
  * @param {Boolean} [sanitize=false] Accept public keys in other formats
@@ -36279,8 +36279,8 @@ exports.isValidPublic = function (publicKey, sanitize) {
 }
 
 /**
- * Returns the happyuc address of a given public key.
- * Accepts "HappyUC public keys" and SEC1 encoded keys.
+ * Returns the irchain address of a given public key.
+ * Accepts "IrChain public keys" and SEC1 encoded keys.
  * @method publicToAddress
  * @param {Buffer} pubKey The two points of an uncompressed key, unless sanitize is enabled
  * @param {Boolean} [sanitize=false] Accept public keys in other formats
@@ -36297,7 +36297,7 @@ exports.pubToAddress = exports.publicToAddress = function (pubKey, sanitize) {
 }
 
 /**
- * Returns the happyuc public key of a given private key
+ * Returns the irchain public key of a given private key
  * @method privateToPublic
  * @param {Buffer} privateKey A private key must be 256 bits wide
  * @return {Buffer}
@@ -36309,7 +36309,7 @@ var privateToPublic = exports.privateToPublic = function (privateKey) {
 }
 
 /**
- * Converts a public key to the HappyUC format.
+ * Converts a public key to the IrChain format.
  * @method importPublic
  * @param {Buffer} publicKey
  * @return {Buffer}
@@ -36368,7 +36368,7 @@ exports.ecrecover = function (msgHash, v, r, s) {
  */
 exports.toRpcSig = function (v, r, s) {
   // ghuc (and the RPC huc_sign method) uses the 65 byte format used by Bitcoin
-  // FIXME: this might change in the future - https://github.com/happyuc-project/happyuc-go/issues/2053
+  // FIXME: this might change in the future - https://github.com/irchain/go-irchain/issues/2053
   return exports.bufferToHex(Buffer.concat([ r, s, exports.toBuffer(v - 27) ]))
 }
 
@@ -36395,7 +36395,7 @@ exports.fromRpcSig = function (sig) {
 }
 
 /**
- * Returns the happyuc address of a given private key
+ * Returns the irchain address of a given private key
  * @method privateToAddress
  * @param {Buffer} privateKey A private key must be 256 bits wide
  * @return {Buffer}
@@ -46241,7 +46241,7 @@ const levelup = require('levelup')
 const memdown = require('memdown')
 const async = require('async')
 const rlp = require('rlp')
-const hucUtil = require('happyucjs-util')
+const hucUtil = require('icjs-util')
 const semaphore = require('semaphore')
 const TrieNode = require('./trieNode')
 const ReadStream = require('./readStream')
@@ -46253,7 +46253,7 @@ const asyncFirstSeries = require('./util').asyncFirstSeries
 module.exports = Trie
 
 /**
- * Use `require('merkel-patricia-tree')` for the base interface. In HappyUC applications stick with the Secure Trie Overlay `require('merkel-patricia-tree/secure')`. The API for the raw and the secure interface are about the same
+ * Use `require('merkel-patricia-tree')` for the base interface. In IrChain applications stick with the Secure Trie Overlay `require('merkel-patricia-tree/secure')`. The API for the raw and the secure interface are about the same
  * @class Trie
  * @param {Object} [db] An instance of [levelup](https://github.com/rvagg/node-levelup/) or a compatible API. If the db is `null` or left undefined, then the trie will be stored in memory via [memdown](https://github.com/rvagg/memdown)
  * @param {Buffer|String} [root]` A hex `String` or `Buffer` for the root of a previously stored trie
@@ -46971,7 +46971,7 @@ Trie.prototype.checkRoot = function (root, cb) {
   })
 }
 
-},{"./readStream":214,"./trieNode":217,"./util":218,"assert":1,"async":213,"happyucjs-util":118,"levelup":176,"memdown":209,"rlp":237,"semaphore":245}],211:[function(require,module,exports){
+},{"./readStream":214,"./trieNode":217,"./util":218,"assert":1,"async":213,"icjs-util":118,"levelup":176,"memdown":209,"rlp":237,"semaphore":245}],211:[function(require,module,exports){
 const levelup = require('levelup')
 const memdown = require('memdown')
 const async = require('async')
@@ -48476,7 +48476,7 @@ TrieReadStream.prototype._read = function () {
 }
 
 },{"./trieNode":217,"readable-stream":235,"util":33}],215:[function(require,module,exports){
-const hucUtil = require('happyucjs-util')
+const hucUtil = require('icjs-util')
 
 module.exports = secureInterface
 
@@ -48516,7 +48516,7 @@ function del (_super, key, cb) {
   _super(hash, cb)
 }
 
-},{"happyucjs-util":118}],216:[function(require,module,exports){
+},{"icjs-util":118}],216:[function(require,module,exports){
 const CheckpointTrie = require('./index')
 const secureInterface = require('./secure-interface')
 const inherits = require('util').inherits
@@ -48537,7 +48537,7 @@ function SecureTrie () {
 },{"./index":212,"./secure-interface":215,"util":33}],217:[function(require,module,exports){
 (function (Buffer){
 const rlp = require('rlp')
-const hucUtil = require('happyucjs-util')
+const hucUtil = require('icjs-util')
 
 module.exports = TrieNode
 
@@ -48793,7 +48793,7 @@ function isRawNode (node) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":4,"happyucjs-util":118,"rlp":237}],218:[function(require,module,exports){
+},{"buffer":4,"icjs-util":118,"rlp":237}],218:[function(require,module,exports){
 (function (process){
 const async = require('async')
 
@@ -49397,7 +49397,7 @@ module.exports = RIPEMD160
 (function (Buffer){
 const assert = require('assert')
 /**
- * RLP Encoding based on: https://github.com/happyuc-project/wiki/wiki/%5BEnglish%5D-RLP
+ * RLP Encoding based on: https://github.com/irchain/wiki/wiki/%5BEnglish%5D-RLP
  * This function takes in a data, convert it to buffer if not, and a length for recursion
  *
  * @param {Buffer,String,Integer,Array} data - will be converted to buffer
@@ -49441,7 +49441,7 @@ function encodeLength (len, offset) {
 }
 
 /**
- * RLP Decoding based on: {@link https://github.com/happyuc-project/wiki/wiki/%5BEnglish%5D-RLP|RLP}
+ * RLP Decoding based on: {@link https://github.com/irchain/wiki/wiki/%5BEnglish%5D-RLP|RLP}
  * @param {Buffer,String,Integer,Array} data - will be converted to buffer
  * @returns {Array} - returns decode Array of Buffers containg the original message
  **/

@@ -1,13 +1,13 @@
 const Buffer = require('safe-buffer').Buffer // use for Node.js <4.5.0
 const async = require('async')
 const Trie = require('merkle-patricia-tree/secure')
-const Block = require('happyucjs-block')
-const Blockchain = require('happyucjs-blockchain')
-const BlockHeader = require('happyucjs-block/header.js')
+const Block = require('icjs-block')
+const Blockchain = require('icjs-blockchain')
+const BlockHeader = require('icjs-block/header.js')
 const VM = require('../../')
 const Level = require('levelup')
-const Account = require('happyucjs-account')
-const utils = require('happyucjs-util')
+const Account = require('icjs-account')
+const utils = require('icjs-util')
 const BN = utils.BN
 const rlp = utils.rlp
 const testData = require('./test-data')
@@ -44,8 +44,8 @@ async.series([
   // create and add genesis block
   function (next) {
     genesisBlock.header = new BlockHeader(
-                            testData.genesisBlockHeader
-                          )
+      testData.genesisBlockHeader
+    )
     blockchain.putGenesis(genesisBlock, next)
   },
 
@@ -56,7 +56,7 @@ async.series([
     function eachBlock (raw, cb) {
       try {
         var block = new Block(
-            Buffer.from(raw.rlp.slice(2), 'hex'))
+          Buffer.from(raw.rlp.slice(2), 'hex'))
 
         // forces the block into thinking they are homestead
         block.header.isHomestead = function () {

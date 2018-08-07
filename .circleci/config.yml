@@ -1,7 +1,7 @@
 version: 2
 
 defaults: &defaults
-  working_directory: ~/project/ethreumjs-vm
+  working_directory: ~/project/icjs-vm
   docker:
     - image: circleci/node:8
 restore_node_modules: &restore_node_modules
@@ -28,7 +28,7 @@ jobs:
       - persist_to_workspace:
           root: ~/project
           paths:
-            - hucreumjs-vm/
+            - icjs-vm/
   lint:
     <<: *defaults
     steps:

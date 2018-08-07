@@ -1,26 +1,26 @@
 # SYNOPSIS
 
-[![NPM Package](https://img.shields.io/npm/v/happyucjs-vm.svg?style=flat-square)](https://www.npmjs.org/package/happyucjs-vm)
-[![Build Status](https://img.shields.io/travis/happyucjs/happyucjs-vm.svg?branch=master&style=flat-square)](https://travis-ci.org/happyucjs/happyucjs-vm)
-[![Coverage Status](https://img.shields.io/coveralls/happyucjs/happyucjs-vm.svg?style=flat-square)](https://coveralls.io/r/happyucjs/happyucjs-vm)
-[![Gitter](https://img.shields.io/gitter/room/happyucjs/happyucjs-lib.svg?style=flat-square)](https://gitter.im/happyucjs/happyucjs-lib) or #happyucjs on freenode
+[![NPM Package](https://img.shields.io/npm/v/icjs-vm.svg?style=flat-square)](https://www.npmjs.org/package/icjs-vm)
+[![Build Status](https://img.shields.io/travis/icjs/icjs-vm.svg?branch=master&style=flat-square)](https://travis-ci.org/icjs/icjs-vm)
+[![Coverage Status](https://img.shields.io/coveralls/icjs/icjs-vm.svg?style=flat-square)](https://coveralls.io/r/icjs/icjs-vm)
+[![Gitter](https://img.shields.io/gitter/room/icjs/icjs-lib.svg?style=flat-square)](https://gitter.im/icjs/icjs-lib) or #icjs on freenode
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
-Implements HappyUC's VM in Javascript.
+Implements IrChain's VM in Javascript.
 
 #### Fork Support
 
-This library always only supports the currently active HappyUC mainnet fork rules with its latest release, old fork rules are dropped with new releases once a HF occured.
+This library always only supports the currently active IrChain mainnet fork rules with its latest release, old fork rules are dropped with new releases once a HF occured.
 
-The current major [2.3.x](https://github.com/happyucjs/happyucjs-vm/releases) release series supports the  [Byzantium](https://github.com/happyuc-project/EIPs/blob/master/EIPS/eip-609.md) fork changes. For a [Spurious Dragon](https://github.com/happyuc-project/EIPs/blob/master/EIPS/eip-607.md) compatible version of this library install the latest of the ``2.2.x`` series (see [Changelog](./CHANGELOG.md)).
+The current major [2.3.x](https://github.com/icjs/icjs-vm/releases) release series supports the  [Byzantium](https://github.com/irchain/EIPs/blob/master/EIPS/eip-609.md) fork changes. For a [Spurious Dragon](https://github.com/irchain/EIPs/blob/master/EIPS/eip-607.md) compatible version of this library install the latest of the ``2.2.x`` series (see [Changelog](./CHANGELOG.md)).
 
 # INSTALL
-`npm install happyucjs-vm`
+`npm install icjs-vm`
 
 # USAGE
 ```javascript
-var VM = require('happyucjs-vm')
+var VM = require('icjs-vm')
 
 //create a new VM instance
 var vm = new VM()
@@ -35,11 +35,11 @@ vm.runCode({
 ```
 Also more examples can be found here
 - [examples](./examples)
-- [old blog post](https://wanderer.github.io/happyuc-project/nodejs/code/2014/08/12/running-contracts-with-vm/)
+- [old blog post](https://wanderer.github.io/irchain/nodejs/code/2014/08/12/running-contracts-with-vm/)
 
 # BROWSER
 
-To build for standalone use in the browser, install `browserify` and check [run-transactions-simple example](https://github.com/happyucjs/happyucjs-vm/tree/master/examples/run-transactions-simple). This will give you a global variable `HucVM` to use. The generated file will be at `./examples/run-transactions-simple/build.js`.
+To build for standalone use in the browser, install `browserify` and check [run-transactions-simple example](https://github.com/icjs/icjs-vm/tree/master/examples/run-transactions-simple). This will give you a global variable `HucVM` to use. The generated file will be at `./examples/run-transactions-simple/build.js`.
 
 # API
   - [`new VM([opts])`](#new-vmstatetrie-blockchain)
@@ -67,14 +67,14 @@ Creates a new VM object
 
 #### `vm.runBlockchain(blockchain, cb)`
 Process blocks and adds them to the blockchain.
-- `blockchain` - A [blockchain](https://github.com/happyucjs/happyucjs-blockchain) that to process
+- `blockchain` - A [blockchain](https://github.com/icjs/icjs-blockchain) that to process
 - `cb` - The callback. It is given an err parameter if it fails
 
 --------------------------------------------------------
 
 #### `vm.runBlock(opts, cb)`
 Processes the `block` running all of the transactions it contains and updating the miner's account.
-- `opts.block` - The [`Block`](https://github.com/happyucjs/happyucjs-block) to process
+- `opts.block` - The [`Block`](https://github.com/icjs/icjs-block) to process
 - `opts.generate` - a `Boolean`; whether to generate the stateRoot. If false  `runBlock` will check the stateRoot of the block against the Trie
 - `cb` - The callback. It is given two arguments, an `error` string containing an error that may have happened or `null`, and a `results` object with the following properties:
   - `receipts` - the receipts from the transactions in the block
@@ -84,10 +84,10 @@ Processes the `block` running all of the transactions it contains and updating t
 
 #### `vm.runTx(opts, cb)`
 Process a transaction.
-- `opts.tx` - A [`Transaction`](https://github.com/happyucjs/happyucjs-tx) to run.
+- `opts.tx` - A [`Transaction`](https://github.com/icjs/icjs-tx) to run.
 - `opts.block` - The block to which the `tx` belongs. If omitted a blank block will be used.
 - `cb` - The callback. It is given two arguments, an `error` string containing an error that may have happened or `null`, and a `results` object with the following properties:
-  - `amountSpent` - the amount of huc used by this transaction as a `bignum`
+  - `amountSpent` - the amount of irc used by this transaction as a `bignum`
   - `gasUsed` - the amount of gas as a `bignum` used by the transaction
   - `gasRefund` - the amount of gas as a `bignum` that was refunded during the transaction (i.e. `gasUsed = totalGasConsumed - gasRefund`)
   - `vm` - contains the results from running the code, if any, as described in [`vm.runCode(params, cb)`](#vmruncodeopts-cb)
@@ -98,10 +98,10 @@ Process a transaction.
 Runs EVM code
 - `opts.code` - The EVM code to run given as a `Buffer`
 - `opts.data` - The input data given as a `Buffer`
-- `opts.value` - The value in huc that is being sent to `opt.address`. Defaults to `0`
-- `opts.block` - The [`Block`](https://github.com/happyucjs/happyucjs-block) the `tx` belongs to. If omitted a blank block will be used.
+- `opts.value` - The value in irc that is being sent to `opt.address`. Defaults to `0`
+- `opts.block` - The [`Block`](https://github.com/icjs/icjs-block) the `tx` belongs to. If omitted a blank block will be used.
 - `opts.gasLimit` - The gas limit for the code given as a `Buffer`
-- `opts.account` - The [`Account`](https://github.com/happyucjs/happyucjs-account) that the executing code belongs to. If omitted an empty account will be used
+- `opts.account` - The [`Account`](https://github.com/icjs/icjs-account) that the executing code belongs to. If omitted an empty account will be used
 - `opts.address` - The address of the account that is executing this code. The address should be a `Buffer` of bytes. Defaults to `0`
 - `opts.origin` - The address where the call originated from. The address should be a `Buffer` of 20bits. Defaults to `0`
 - `opts.caller` - The address that ran this code. The address should be a `Buffer` of 20bits. Defaults to `0`
@@ -125,7 +125,7 @@ Generates the Canonical genesis state.
 
 #### `vm.stateManager.generateGenesis(genesisData, cb)`
 Generate the genesis state.
-- `genesisData` - an `Object` whose keys are addresses and values are `string`s representing initial allocation of huc.
+- `genesisData` - an `Object` whose keys are addresses and values are `string`s representing initial allocation of irc.
 - `cb` - The callback
 
 ```javascript
@@ -149,7 +149,7 @@ The `step` event is given an `Object` and callback. The `Object` has the followi
 - `gasLeft` - a `bignum` standing for the amount of gasLeft
 - `stack` - an `Array` of `Buffers` containing the stack.
 - `storageTrie` - the storage [trie](https://github.com/wanderer/merkle-patricia-tree) for the account
-- `account` - the [`Account`](https://github.com/happyucjs/happyucjs-account) which owns the code running.
+- `account` - the [`Account`](https://github.com/icjs/icjs-account) which owns the code running.
 - `address` - the address of the `account`
 - `depth` - the current number of calls deep the contract is
 - `memory` - the memory of the VM as a `buffer`
@@ -205,10 +205,10 @@ The opFns for `CREATE`, `CALL`, and `CALLCODE` call back up to `runCall`.
 
 ### Running Tests
 
-Tests can be found in the ``tests`` directory, with ``FORK_CONFIG`` set in ``tests/tester.js``. There are test runners for [State tests](http://www.hucdocs.org/en/latest/contracts-and-transactions/happyuc-tests/state_tests/index.html) and [Blockchain tests](http://www.hucdocs.org/en/latest/contracts-and-transactions/happyuc-tests/blockchain_tests/index.html). VM tests are disabled since Frontier gas costs are not supported any more. Tests are then executed by the [happyucjs-testing](https://github.com/happyucjs/happyucjs-testing) utility library using the official client-independent [HappyUC tests](https://github.com/happyuc-project/tests).
+Tests can be found in the ``tests`` directory, with ``FORK_CONFIG`` set in ``tests/tester.js``. There are test runners for [State tests](http://www.ircdocs.org/en/latest/contracts-and-transactions/irchain-tests/state_tests/index.html) and [Blockchain tests](http://www.ircdocs.org/en/latest/contracts-and-transactions/irchain-tests/blockchain_tests/index.html). VM tests are disabled since Frontier gas costs are not supported any more. Tests are then executed by the [icjs-testing](https://github.com/icjs/icjs-testing) utility library using the official client-independent [IrChain tests](https://github.com/irchain/tests).
 
-For a wider picture about how to use tests to implement EIPs you can have a look at this [reddit post](https://www.reddit.com/r/happyuc-project/comments/6kc5g3/happyucjs_team_is_seeking_contributors/)
-or the associated YouTube video introduction to [core development with HappyUCjs-vm](https://www.youtube.com/watch?v=L0BVDl6HZzk&feature=youtu.be).
+For a wider picture about how to use tests to implement EIPs you can have a look at this [reddit post](https://www.reddit.com/r/irchain/comments/6kc5g3/icjs_team_is_seeking_contributors/)
+or the associated YouTube video introduction to [core development with IrChainjs-vm](https://www.youtube.com/watch?v=L0BVDl6HZzk&feature=youtu.be).
 
 #### Running different Test Types
 
@@ -245,7 +245,7 @@ Running a specific state test case:
 `node ./tests/tester -s --test='stackOverflow'`
 
 Only run test cases with selected ``data``, ``gas`` and/or ``value`` values (see 
-[attribute description](http://happyuc-tests.readthedocs.io/en/latest/test_types/state_tests.html) in 
+[attribute description](http://irchain-tests.readthedocs.io/en/latest/test_types/state_tests.html) in
 test docs), provided by the index of the array element in the test ``transaction`` section:
 
 `node tests/tester -s --test='CreateCollisionToEmpty' --data=0 --gas=1 --value=0`
@@ -279,11 +279,11 @@ Blockchain tests support `--debug` to verify the postState:
 
 `node ./tests/tester -b  --debug --test='ZeroValue_SELFDESTRUCT_ToOneStorageKey_OOGRevert_d0g0v0_EIP158'`
 
-All/most State tests are replicated as Blockchain tests in a ``GeneralStateTests`` [sub directory](https://github.com/happyuc-project/tests/tree/develop/BlockchainTests/GeneralStateTests) in the HappyUC tests repo, so for debugging single test cases the Blockchain test version of the State test can be used.
+All/most State tests are replicated as Blockchain tests in a ``GeneralStateTests`` [sub directory](https://github.com/irchain/tests/tree/develop/BlockchainTests/GeneralStateTests) in the IrChain tests repo, so for debugging single test cases the Blockchain test version of the State test can be used.
 
 #### Debugging Tools
 
-For comparing ``EVM`` traces [here](https://gist.github.com/cdetrio/41172f374ae32047a6c9e97fa9d09ad0) are some instructions for setting up ``pyhappyuc`` to generate corresponding traces for state tests.
+For comparing ``EVM`` traces [here](https://gist.github.com/cdetrio/41172f374ae32047a6c9e97fa9d09ad0) are some instructions for setting up ``pyirchain`` to generate corresponding traces for state tests.
 
 Compare TAP output from blockchain/state tests and produces concise diff of the differences between them (example):
 

@@ -3,7 +3,7 @@
 const argv = require('minimist')(process.argv.slice(2))
 const async = require('async')
 const tape = require('tape')
-const testing = require('happyucjs-testing')
+// const testing = require('icjs-testing')
 const FORK_CONFIG = argv.fork || 'Byzantium'
 // tests which should be fixed
 const skipBroken = [
@@ -60,7 +60,7 @@ const skipSlow = [
 ]
 
 /*
-NOTE: VM tests have been disabled since they are generated using Frontier gas costs, and happyucjs-vm doesn't support historical fork rules
+NOTE: VM tests have been disabled since they are generated using Frontier gas costs, and icjs-vm doesn't support historical fork rules
 
 TODO: some VM tests do not appear to be executing (don't print an "ok" statement):
 ...
@@ -88,7 +88,7 @@ const skipVM = [
   'loop-exp-nop-1M',
   'loop-mulmod-2M',
   // some VM tests fail because the js runner executes CALLs
-  // see https://github.com/happyuc-project/tests/wiki/VM-Tests  > Since these tests are meant only as a basic test of VM operation, the CALL and CREATE instructions are not actually executed.
+  // see https://github.com/irchain/tests/wiki/VM-Tests  > Since these tests are meant only as a basic test of VM operation, the CALL and CREATE instructions are not actually executed.
   'ABAcalls0',
   'ABAcallsSuicide0',
   'ABAcallsSuicide1',
