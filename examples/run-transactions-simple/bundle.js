@@ -6897,13 +6897,13 @@ module.exports = VM;
 VM.deps = {
   ircUtil: hucUtil,
   Account: require('icjs-accounts'),
-  Trie   : require('merkle-patricia-tree'),
+  Trie   : require('icjs-mpt'),
   rlp    : require('icjs-util').rlp
 
   /**
    * @constructor
    * @param {Object} [opts]
-   * @param {Trie} [opts.state] A merkle-patricia-tree instance for the state tree
+   * @param {Trie} [opts.state] A icjs-mpt instance for the state tree
    * @param {Blockchain} [opts.blockchain] A blockchain object for storing/retrieving blocks
    * @param {Boolean} [opts.activatePrecompiles] Create entries in the state tree for the precompiled contracts
    */
@@ -6964,7 +6964,7 @@ VM.prototype.populateCache = function (addresses, cb) {
   this.stateManager.warmCache(addresses, cb);
 };
 
-},{"./precompiled/01-ecrecover.js":44,"./precompiled/02-sha256.js":45,"./precompiled/03-ripemd160.js":46,"./precompiled/04-identity.js":47,"./runBlock.js":48,"./runBlockchain.js":49,"./runCall.js":50,"./runCode.js":51,"./runJit.js":52,"./runTx.js":53,"./stateManager.js":54,"async-eventemitter":60,"icjs-accounts":112,"icjs-util":118,"merkle-patricia-tree":212,"safe-buffer":238,"util":33}],41:[function(require,module,exports){
+},{"./precompiled/01-ecrecover.js":44,"./precompiled/02-sha256.js":45,"./precompiled/03-ripemd160.js":46,"./precompiled/04-identity.js":47,"./runBlock.js":48,"./runBlockchain.js":49,"./runCall.js":50,"./runCode.js":51,"./runJit.js":52,"./runTx.js":53,"./stateManager.js":54,"async-eventemitter":60,"icjs-accounts":112,"icjs-util":118,"icjs-mpt":212,"safe-buffer":238,"util":33}],41:[function(require,module,exports){
 'use strict';
 
 var utils = require('icjs-util');
@@ -8277,7 +8277,7 @@ var hucUtil = require('icjs-util');
 var Bloom = require('./bloom.js');
 var common = require('icjs-common');
 var rlp = hucUtil.rlp;
-var Trie = require('merkle-patricia-tree');
+var Trie = require('icjs-mpt');
 var BN = hucUtil.BN;
 
 var minerReward = new BN(common.minerReward.v);
@@ -8471,7 +8471,7 @@ module.exports = function (opts, cb) {
   }
 };
 
-},{"./bloom.js":36,"async":63,"icjs-common":110,"icjs-util":118,"merkle-patricia-tree":212,"safe-buffer":238}],49:[function(require,module,exports){
+},{"./bloom.js":36,"async":63,"icjs-common":110,"icjs-util":118,"icjs-mpt":212,"safe-buffer":238}],49:[function(require,module,exports){
 'use strict';
 
 var async = require('async');
@@ -9247,7 +9247,7 @@ function txLogsBloom(logs) {
 'use strict';
 
 var Buffer = require('safe-buffer').Buffer;
-var Trie = require('merkle-patricia-tree/secure.js');
+var Trie = require('icjs-mpt/secure.js');
 var common = require('icjs-common');
 var async = require('async');
 var Account = require('icjs-accounts');
@@ -9575,7 +9575,7 @@ proto.accountIsEmpty = function (address, cb) {
   });
 };
 
-},{"./cache.js":37,"./fakeBlockChain.js":39,"async":63,"icjs-common":110,"icjs-accounts":112,"icjs-util":118,"merkle-patricia-tree/secure.js":216,"safe-buffer":238}],55:[function(require,module,exports){
+},{"./cache.js":37,"./fakeBlockChain.js":39,"async":63,"icjs-common":110,"icjs-accounts":112,"icjs-util":118,"icjs-mpt/secure.js":216,"safe-buffer":238}],55:[function(require,module,exports){
 (function (process){
 /* Copyright (c) 2013 Rod Vagg, MIT License */
 
@@ -34374,7 +34374,7 @@ BlockHeader.prototype.isHomesteadReprice = function () {
 
 var hucUtil = require('icjs-util');
 var Tx = require('icjs-tx');
-var Trie = require('merkle-patricia-tree');
+var Trie = require('icjs-mpt');
 var BN = hucUtil.BN;
 var rlp = hucUtil.rlp;
 var async = require('async');
@@ -34699,7 +34699,7 @@ function arrayToString(array) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./header":113,"async":63,"buffer":4,"icjs-common/params.json":115,"icjs-tx":116,"icjs-util":117,"merkle-patricia-tree":212}],115:[function(require,module,exports){
+},{"./header":113,"async":63,"buffer":4,"icjs-common/params.json":115,"icjs-tx":116,"icjs-util":117,"icjs-mpt":212}],115:[function(require,module,exports){
 module.exports={
   "genesisGasLimit": {
     "v": 5000,
@@ -48525,7 +48525,7 @@ module.exports = SecureTrie
 inherits(SecureTrie, CheckpointTrie)
 
 /**
- * You can create a secure Trie where the keys are automatically hashed using **SHA3** by using `require('merkle-patricia-tree/secure')`. It has the same methods and constuctor as `Trie`
+ * You can create a secure Trie where the keys are automatically hashed using **SHA3** by using `require('icjs-mpt/secure')`. It has the same methods and constuctor as `Trie`
  * @class SecureTrie
  * @extends Trie
  */

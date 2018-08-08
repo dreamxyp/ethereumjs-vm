@@ -1,6 +1,6 @@
 const async = require('async')
 const testUtil = require('./util')
-const Trie = require('merkle-patricia-tree/secure')
+const Trie = require('icjs-mpt/secure')
 const ircUtil = require('icjs-util')
 const BN = ircUtil.BN
 

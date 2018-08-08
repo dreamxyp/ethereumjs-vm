@@ -1,6 +1,6 @@
 const Buffer = require('safe-buffer').Buffer // use for Node.js <4.5.0
 const async = require('async')
-const Trie = require('merkle-patricia-tree/secure')
+const Trie = require('icjs-mpt/secure')
 const Block = require('icjs-block')
 const Blockchain = require('icjs-blockchain')
 const BlockHeader = require('icjs-block/header.js')

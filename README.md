@@ -57,7 +57,7 @@ To build for standalone use in the browser, install `browserify` and check [run-
 Creates a new VM object
 - `opts`
   - `stateManager` - A state manager instance (**EXPERIMENTAL** - unstable API)
-  - `state` - A merkle-patricia-tree instance for the state tree (ignored if `stateManager` is passed)
+  - `state` - A icjs-mpt instance for the state tree (ignored if `stateManager` is passed)
   - `blockchain` - A blockchain object for storing/retrieving blocks (ignored if `stateManager` is passed)
   - `activatePrecompiles` - Create entries in the state tree for the precompiled contracts
   - `allowUnlimitedContractSize` - Allows unlimited contract sizes while debugging. By setting this to `true`, the check for contract size limit of 2KB (see [EIP-170](https://git.io/vxZkK)) is bypassed. (default: `false`; **ONLY** set to `true` during debugging).
@@ -148,7 +148,7 @@ The `step` event is given an `Object` and callback. The `Object` has the followi
 - `opcode` - the next opcode to be ran
 - `gasLeft` - a `bignum` standing for the amount of gasLeft
 - `stack` - an `Array` of `Buffers` containing the stack.
-- `storageTrie` - the storage [trie](https://github.com/wanderer/merkle-patricia-tree) for the account
+- `storageTrie` - the storage [trie](https://github.com/wanderer/icjs-mpt) for the account
 - `account` - the [`Account`](https://github.com/icjs/icjs-accounts) which owns the code running.
 - `address` - the address of the `account`
 - `depth` - the current number of calls deep the contract is

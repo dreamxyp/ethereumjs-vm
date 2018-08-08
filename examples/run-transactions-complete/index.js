@@ -10,7 +10,7 @@ var async = require('async')
 var VM = require('./../../index.js')
 var Account = require('icjs-accounts')
 var Transaction = require('icjs-tx')
-var Trie = require('merkle-patricia-tree')
+var Trie = require('icjs-mpt')
 var rlp = require('rlp')
 var utils = require('icjs-util')
 

@@ -3,7 +3,7 @@ const VM = require('../')
 var async = require('async')
 var Account = require('icjs-accounts')
 var Transaction = require('icjs-tx')
-var Trie = require('merkle-patricia-tree')
+var Trie = require('icjs-mpt')
 var ircUtil = require('icjs-util')
 
 tape('test the cache api', function (t) {
