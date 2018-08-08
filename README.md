@@ -101,7 +101,7 @@ Runs EVM code
 - `opts.value` - The value in irc that is being sent to `opt.address`. Defaults to `0`
 - `opts.block` - The [`Block`](https://github.com/icjs/icjs-block) the `tx` belongs to. If omitted a blank block will be used.
 - `opts.gasLimit` - The gas limit for the code given as a `Buffer`
-- `opts.account` - The [`Account`](https://github.com/icjs/icjs-account) that the executing code belongs to. If omitted an empty account will be used
+- `opts.account` - The [`Account`](https://github.com/icjs/icjs-accounts) that the executing code belongs to. If omitted an empty account will be used
 - `opts.address` - The address of the account that is executing this code. The address should be a `Buffer` of bytes. Defaults to `0`
 - `opts.origin` - The address where the call originated from. The address should be a `Buffer` of 20bits. Defaults to `0`
 - `opts.caller` - The address that ran this code. The address should be a `Buffer` of 20bits. Defaults to `0`
@@ -149,7 +149,7 @@ The `step` event is given an `Object` and callback. The `Object` has the followi
 - `gasLeft` - a `bignum` standing for the amount of gasLeft
 - `stack` - an `Array` of `Buffers` containing the stack.
 - `storageTrie` - the storage [trie](https://github.com/wanderer/merkle-patricia-tree) for the account
-- `account` - the [`Account`](https://github.com/icjs/icjs-account) which owns the code running.
+- `account` - the [`Account`](https://github.com/icjs/icjs-accounts) which owns the code running.
 - `address` - the address of the `account`
 - `depth` - the current number of calls deep the contract is
 - `memory` - the memory of the VM as a `buffer`

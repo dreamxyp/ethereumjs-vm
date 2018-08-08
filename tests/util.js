@@ -2,7 +2,7 @@ const async = require('async')
 const utils = require('icjs-util')
 const BN = utils.BN
 const rlp = utils.rlp
-const Account = require('icjs-account')
+const Account = require('icjs-accounts')
 const Transaction = require('icjs-tx')
 const Block = require('icjs-block')
 
